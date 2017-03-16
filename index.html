@@ -13,7 +13,7 @@
 http://i.imgur.com/DnuoN8l.gif
 */
 
-font: 12pt helvetica;
+font: 10pt consolas;
 width: 100%;
 }
 
@@ -44,6 +44,21 @@ float: right;
 
 .classOptions {
 	display: none;
+}
+
+.header, .footer {
+    background-color: grey;
+    color: black;
+    padding: 15px;
+    width: 100%;
+    clear: left;
+}
+
+.column1, .column2, .column3 {
+	width: 220px;
+	padding: 15px;
+	float: left;
+	word-wrap: normal;
 }
 
 .armorhp {
@@ -80,7 +95,7 @@ float: right;
 
 }
 
-.side-area {
+/*.side-area {
 	float: right;
 	width: 350px;
 	padding-bottom: .5em;
@@ -88,7 +103,7 @@ float: right;
 	border-left:  1px solid;
 	border-bottom:  1px solid;
 	margin-left: .5em;
-  }
+  }*/
 
 </style>
 </head> 
@@ -134,20 +149,20 @@ float: right;
 	</select>
 
 	<select id="selRace"><option value="0">Any Race</option>
-	<option value="21">Aarakocra</option>	
+<!--	<option value="21">Aarakocra</option>	-->
 	<option value="1">Dragonborn</option>
 	<option value="11">Dwarf (Hill)</option>
 	<option value="12">Dwarf (Mountain)</option>
 	<option value="6">Elf (Drow)</option>
 	<option value="14">Elf (High)</option>
 	<option value="15">Elf (Wood)</option>
-	<option value="23">Genasi (Air)</option>
+<!--	<option value="23">Genasi (Air)</option>
 	<option value="24">Genasi (Earth)</option>
 	<option value="25">Genasi (Fire)</option>
-	<option value="26">Genasi (Water)</option>
+	<option value="26">Genasi (Water)</option>-->
 	<option value="2">Gnome (Forest)</option>
 	<option value="7">Gnome (Rock)</option>
-	<option value="22">Gnome (Svirfneblin)</option>
+<!--	<option value="22">Gnome (Svirfneblin)</option>-->
 	<option value="27">Goliath</option>
 	<option value="3">Half-Elf</option>
 	<option value="4">Half-Orc</option>
@@ -296,19 +311,19 @@ float: right;
 
 	
 	<select id="selBg"><option value="0">Any Background</option>
-	<option value="1">Acolyte</option>
-	<option value="2">Charlatan</option>
-	<option value="3">Criminal</option>
-	<option value="4">Entertainer</option>
-	<option value="7">Folk Hero</option>
-	<option value="5">Guild Artisan</option>
-	<option value="6">Hermit</option>
-	<option value="8">Noble</option>
-	<option value="9">Outlander</option>
-	<option value="10">Sage</option>
-	<option value="11">Sailor</option>
-	<option value="12">Soldier</option>
-	<option value="13">Urchin</option>
+	<option value="1">Acolyte (Insight, Religion)</option>
+	<option value="2">Charlatan (Deception, Sleight of Hand)</option>
+	<option value="3">Criminal (Deception, Stealth)</option>
+	<option value="4">Entertainer (Acrobatics, Performance)</option>
+	<option value="7">Folk Hero (Animal Handling, Survival)</option>
+	<option value="5">Guild Artisan (Insight, Persuasion)</option>
+	<option value="6">Hermit (Medicine, Religion)</option>
+	<option value="8">Noble (History, Persuasion)</option>
+	<option value="9">Outlander (Athletics, Survival)</option>
+	<option value="10">Sage (Arcana, History)</option>
+	<option value="11">Sailor (Athletics, Perception)</option>
+	<option value="12">Soldier (Athletics, Intimidation)</option>
+	<option value="13">Urchin (Sleight of Hand, Stealth)</option>
 	</select>
 
 
@@ -445,30 +460,97 @@ float: right;
 
 <hr>
 <div class="complete">
+
+
+
+
 	<div class="main-area">
-		<div class="side-area">
+		
+		
+	<div class="header"
+		<span id="status">Loading...</span><br>
+	
+	</div>
+		
+<!--		<div class="side-area">
 			<span id="bg"></span><br>
+		</div>-->
+		
+		<div class="column1">
+			<span id="dspAbilScores" style="white-space: pre; font-size: 18px"></span><br>
+			<span id="dspProfBonus" style="white-space: pre; font-size: 12px"></span><br>
+			<span id="dspSkillProfs" style="white-space: pre; font-size: 11px"></span><br>
+			
+			<span id="dspArmorProfs" style="font-size: 11px"></span><br>
+			<span id="dspWpnProfs" style="font-size: 11px;"></span><br>
+			<span id="dspToolProfs" style="font-size: 11px"></span><br>
+			<span id="dspLangProfs" style="font-size: 11px"></span><br>
+			<!--<b>Proficient skills:</b>-->
+			<span id="sk" style="display: none;"></span><br><br>
+			
+			<span id="ab"></span><br>
+
+			
+			
 		</div>
-		<span id="status">Loading...</span>
-		<div class="armorhp">
-			<span id="ar"></span>
-		</div>
-		<div style="weapons">
+	  
+	  <div class="column2">
+	  	<span id="ar" style="white-space: pre; font-size: 14px"></span><br>
+	  	<span id="dspMiscInfo" style="font-size: 11px"></span><br>
+	  	
+	  	
+	  	
+	  	
+	  </div>
+	  
+	  <div class="column3">
+	  	<span id="bg" style="font-family: arial"></span><br><br>
+	  	
+	  	<b>Melee weapons:</b><br>
+			<span id="wp"></span><br><br>
+			<b>Equipment:</b>  <span id="eq"></span>
+			
+	  </div>
+		
+		
+<!--		<div class="armorhp">
+			
+		</div>-->
+		
+<!--		<div style="weapons">
 			<b>Melee weapons:</b>
 			<br>
 			<span id="wp"></span>
-		</div>
-		<b>Proficient skills:</b>  <span id="sk"></span><br>
-		<span id="ab"></span><br>
+		</div>-->
+		
 
-		<b>Equipment:</b>  <span id="eq"></span>
+	<div class="footer">
 		<div class="spells" id="spellspot"><span id="sp"></span></div>
 	</div>
+		
+		
+	</div>
+	
+
+	
 </div>
 
 
 
 <script language="javascript">
+
+
+// repeat character n times function JMD
+function repeatChar(theChar, howMany) {
+	result = '';
+	if (howMany < 1) {
+		return result;
+	}
+	for (i=0;i < howMany;i++) {
+		result += theChar;
+	}
+	return result;
+}
 
 
 var firstAbil=true;
@@ -905,7 +987,7 @@ var cl5 = ["Commune","Contagion","Dispel Evil and Good","Flame Strike","Geas","G
 var baCantrip = ["Blade Ward","Dancing Lights","Friends","Light","Mage Hand","Mending","Message","Minor Illusion","Prestidigitation","Thunderclap","True Strike","Vicious Mockery"];
 var ba1 = ["Animal Friendship","Bane","Charm Person","Comprehend Languages","Cure Wounds","Detect Magic","Disguise Self","Dissonant Whispers","Earth Tremor","Faerie Fire","Feather Fall","Healing Word","Heroism","Identify","Illusory Script","Longstrider","Silent Image","Sleep","Speak with Animals","Tasha's Hideous Laughter","Thunderwave","Unseen Servant"];
 var ba2 = ["Animal Messenger","Blindness/Deafness","Calm Emotions","Cloud of Daggers","Crown of Madness","Detect Thoughts","Enhance Ability","Enthrall","Heat Metal","Hold Person","Invisibility","Knock","Lesser Restoration","Locate Animals or Plants","Locate Object","Magic Mouth","Phantasmal Force","Pyrotechnics","See Invisibility","Shatter","Silence","Skywrite","Suggestion","Warding Wind","Zone of Truth"];
-var ba3 = ["Bestow Curse","Clairvoyance","Dispel Magic","Fear","Feign Death","Glyph of Warding","Hypnotic Pattern","Leomund’s Tiny Hut","Major Image","Nondetection","Plant Growth","Sending","Speak with Dead","Speak with Plants","Stinking Cloud","Tongues"];
+var ba3 = ["Bestow Curse","Clairvoyance","Dispel Magic","Fear","Feign Death","Glyph of Warding","Hypnotic Pattern","Leomund's Tiny Hut","Major Image","Nondetection","Plant Growth","Sending","Speak with Dead","Speak with Plants","Stinking Cloud","Tongues"];
 //var ba1 = ["Animal Friendship","Bane","Charm Person","Comprehend Languages","Cure Wounds","Detect Magic","Disguise Self","Dissonant Whispers","Faerie Fire","Feather Fall","Healing Word","Heroism","Identify","Illusory Script","Longstrider","Silent Image","Sleep","Speak with Animals","Tasha's Hideous Laughter","Thunderwave","Unseen Servant"];
 //var ba2 = ["Animal Messenger","Blindness/Deafness","Calm Emotions","Cloud of Daggers","Crown of Madness","Detect Thoughts","Enhance Ability","Enthrall","Heat Metal","Hold Person","Invisibility","Knock","Lesser Restoration","Locate Animals or Plants","Locate Object","Magic Mouth","Phantasmal Force","See Invisibility","Shatter","Silence","Suggestion","Zone of Truth"];
 var ba4 = ["Compulsion","Confusion","Dimension Door","Freedom of Movement","Greater Invisibility","Hallucinatory Terrain","Locate Creature","Polymorph"];
@@ -964,15 +1046,15 @@ var wiCantrip = ["Create Bonfire","Control Flames","Frostbite","Gust","Mold Eart
 //NOT ENOUGH FAMILIARS. therefore, 2 find familiar spells
 var wi1 = ["Absorb Elements","Catapult","Ice Knife","Earth Tremor","Alarm","Burning Hands","Charm Person","Chromatic Orb","Color Spray","Comprehend Languages","Detect Magic","Disguise Self","Expeditious Retreat","False Life","Feather Fall","Find Familiar","Find Familiar","Fog Cloud","Grease","Identify","Illusory Script","Jump","Longstrider","Mage Armor","Magic Missile","Protection from Good and Evil","Ray of Sickness","Shield","Silent Image","Sleep","Tasha's Hideous Laughter","Tenser's Floating Disk","Thunderwave","Unseen Servant","Witch Bolt"];
 var wi2 = ["Aganazzar's Scorcher","Dust Devil","Earthbind","Maximilian's Earthen Grap","Pyrotechnics","Skywrite","Snilloc's Snowball Swarm","Alter Self","Arcane Lock","Blindness/Deafness","Blur","Cloud of Daggers","Continual Flame","Crown of Madness","Darkness","Darkvision","Detect Thoughts","Enlarge/Reduce","Flaming Sphere","Gentle Repose","Gust of Wind","Hold Person","Invisibility","Knock","Levitate","Locate Object","Magic Mouth","Magic Weapon","Melf's Acid Arrow","Mirror Image","Misty Step","Nystul's Magic Aura","Phantasmal Force","Ray of Enfeeblement","Rope Trick","Scorching Ray","See Invisibility","Shatter","Spider Climb","Suggestion","Web"];
-var wi3 = ["Erupting Earth","Flame Arrows","Melf's Minute Meteors","Tidal Wave","Wall of Sand","Wall of Water","Animate Dead","Bestow Curse","Blink","Clairvoyance","Counterspell","Dispel Magic","Fear","Feign Death","Fireball","Fly","Gaseous Form","Glyph of Warding","Haste","Hypnotic Pattern","Leomund’s Tiny Hut","Lightning Bolt","Magic Circle","Major Image","Nondetection","Phantom Steed","Protection from Energy","Remove Curse","Sending","Sleet Storm","Slow","Stinking Cloud","Tongues","Vampiric Touch","Water Breathing"];
-var wi4 = ["Elemental Bane","Storm Sphere","Vitriolic Sphere","Watery Sphere","Arcane Eye","Banishment","Blight","Confusion","Conjure Minor Elementals","Control Water","Dimension Door","Evard's Black Tentacles","Fabricate","Fire Shield","Greater Invisibility","Hallucinatory Terrain","Ice Storm","Leomund’s Secret Chest","Locate Creature","Mordenkainen’s Faithful Hound","Mordenkainen’s Private Sanctum","Otiluke’s Resilient Sphere","Phantasmal Killer","Polymorph","Stone Shape","Stoneskin","Wall of Fire"];
-var wi5 = ["Control Winds","Immolation","Transmute Rock","Animate Objects","Bigby’s Hand","CloudkilI","Cone of Cold","Conjure Elemental","Contact Other Plane","Creation","Dominate Person","Dream","Geas","Hold Monster","Legend Lore","Mislead","Modify Memory","Passwall","Planar Binding","Rary’s Telepathic Bond","Scrying","Seeming","Telekinesis","Teleportation Circle","Wall of Force","Wall of Stone"];
+var wi3 = ["Erupting Earth","Flame Arrows","Melf's Minute Meteors","Tidal Wave","Wall of Sand","Wall of Water","Animate Dead","Bestow Curse","Blink","Clairvoyance","Counterspell","Dispel Magic","Fear","Feign Death","Fireball","Fly","Gaseous Form","Glyph of Warding","Haste","Hypnotic Pattern","Leomund's Tiny Hut","Lightning Bolt","Magic Circle","Major Image","Nondetection","Phantom Steed","Protection from Energy","Remove Curse","Sending","Sleet Storm","Slow","Stinking Cloud","Tongues","Vampiric Touch","Water Breathing"];
+var wi4 = ["Elemental Bane","Storm Sphere","Vitriolic Sphere","Watery Sphere","Arcane Eye","Banishment","Blight","Confusion","Conjure Minor Elementals","Control Water","Dimension Door","Evard's Black Tentacles","Fabricate","Fire Shield","Greater Invisibility","Hallucinatory Terrain","Ice Storm","Leomund's Secret Chest","Locate Creature","Mordenkainen's Faithful Hound","Mordenkainen's Private Sanctum","Otiluke's Resilient Sphere","Phantasmal Killer","Polymorph","Stone Shape","Stoneskin","Wall of Fire"];
+var wi5 = ["Control Winds","Immolation","Transmute Rock","Animate Objects","Bigby's Hand","CloudkilI","Cone of Cold","Conjure Elemental","Contact Other Plane","Creation","Dominate Person","Dream","Geas","Hold Monster","Legend Lore","Mislead","Modify Memory","Passwall","Planar Binding","Rary's Telepathic Bond","Scrying","Seeming","Telekinesis","Teleportation Circle","Wall of Force","Wall of Stone"];
 
 //var wi1 = ["Alarm","Burning Hands","Charm Person","Chromatic Orb","Color Spray","Comprehend Languages","Detect Magic","Disguise Self","Expeditious Retreat","False Life","Feather Fall","Find Familiar","Find Familiar","Fog Cloud","Grease","Identify","Illusory Script","Jump","Longstrider","Mage Armor","Magic Missile","Protection from Good and Evil","Ray of Sickness","Shield","Silent Image","Sleep","Tasha's Hideous Laughter","Tenser's Floating Disk","Thunderwave","Unseen Servant","Witch Bolt"];
 //var wi2 = ["Alter Self","Arcane Lock","Blindness/Deafness","Blur","Cloud of Daggers","Continual Flame","Crown of Madness","Darkness","Darkvision","Detect Thoughts","Enlarge/Reduce","Flaming Sphere","Gentle Repose","Gust of Wind","Hold Person","Invisibility","Knock","Levitate","Locate Object","Magic Mouth","Magic Weapon","Melf's Acid Arrow","Mirror Image","Misty Step","Nystul's Magic Aura","Phantasmal Force","Ray of Enfeeblement","Rope Trick","Scorching Ray","See Invisibility","Shatter","Spider Climb","Suggestion","Web"];
-//var wi3 = ["Animate Dead","Bestow Curse","Blink","Clairvoyance","Counterspell","Dispel Magic","Fear","Feign Death","Fireball","Fly","Gaseous Form","Glyph of Warding","Haste","Hypnotic Pattern","Leomund’s Tiny Hut","Lightning Bolt","Magic Circle","Major Image","Nondetection","Phantom Steed","Protection from Energy","Remove Curse","Sending","Sleet Storm","Slow","Stinking Cloud","Tongues","Vampiric Touch","Water Breathing"];
-//var wi4 = ["Arcane Eye","Banishment","Blight","Confusion","Conjure Minor Elementals","Control Water","Dimension Door","Evard's Black Tentacles","Fabricate","Fire Shield","Greater Invisibility","Hallucinatory Terrain","Ice Storm","Leomund’s Secret Chest","Locate Creature","Mordenkainen’s Faithful Hound","Mordenkainen’s Private Sanctum","Otiluke’s Resilient Sphere","Phantasmal Killer","Polymorph","Stone Shape","Stoneskin","Wall of Fire"];
-//var wi5 = ["Animate Objects","Bigby’s Hand","CloudkilI","Cone of Cold","Conjure Elemental","Contact Other Plane","Creation","Dominate Person","Dream","Geas","Hold Monster","Legend Lore","Mislead","Modify Memory","Passwall","Planar Binding","Rary’s Telepathic Bond","Scrying","Seeming","Telekinesis","Teleportation Circle","Wall of Force","Wall of Stone"];
+//var wi3 = ["Animate Dead","Bestow Curse","Blink","Clairvoyance","Counterspell","Dispel Magic","Fear","Feign Death","Fireball","Fly","Gaseous Form","Glyph of Warding","Haste","Hypnotic Pattern","Leomund's Tiny Hut","Lightning Bolt","Magic Circle","Major Image","Nondetection","Phantom Steed","Protection from Energy","Remove Curse","Sending","Sleet Storm","Slow","Stinking Cloud","Tongues","Vampiric Touch","Water Breathing"];
+//var wi4 = ["Arcane Eye","Banishment","Blight","Confusion","Conjure Minor Elementals","Control Water","Dimension Door","Evard's Black Tentacles","Fabricate","Fire Shield","Greater Invisibility","Hallucinatory Terrain","Ice Storm","Leomund's Secret Chest","Locate Creature","Mordenkainen's Faithful Hound","Mordenkainen's Private Sanctum","Otiluke's Resilient Sphere","Phantasmal Killer","Polymorph","Stone Shape","Stoneskin","Wall of Fire"];
+//var wi5 = ["Animate Objects","Bigby's Hand","CloudkilI","Cone of Cold","Conjure Elemental","Contact Other Plane","Creation","Dominate Person","Dream","Geas","Hold Monster","Legend Lore","Mislead","Modify Memory","Passwall","Planar Binding","Rary's Telepathic Bond","Scrying","Seeming","Telekinesis","Teleportation Circle","Wall of Force","Wall of Stone"];
 
 
 var scrollBardUnc = ["Cure Wounds","Speak with Dead","Fear","Invisibility","Dispel Magic","Polymorph","Major Image"];
@@ -1020,7 +1102,7 @@ var ci2 = ["Blur","Silence","Create Food and Water","Protection from Energy"];
 var ci3 = ["Barkskin","Spider Climb","Call Lightning","Plant Growth"];
 var ci4 = ["Invisibility","Pass Without Trace","Daylight","Haste"];
 var ci5 = ["Spider Climb","Spike Growth","Lightning Bolt","Meld into Stone"];
-var ci6 = ["Darkness","Melf’s Acid Arrow","Water Walk","Stinking Cloud"];
+var ci6 = ["Darkness","Melf's Acid Arrow","Water Walk","Stinking Cloud"];
 var ci7 = ["Spider Climb","Web","Gaseous Form","Stinking Cloud"];
 
 
@@ -1124,7 +1206,7 @@ var magicUncommon = ["Bag of Holding","Boots of Striding and Springing","Cloak o
 var magicRare = ["Ring of Evasion (3 charges)","Ring of Protection","Ring of Resistance"];
 //"Amulet of Health",
 var magicVeryRare = ["Potion of Flying","Potion of Invisibility","Potion of Vitality"];
-poisonUncommon = ["Assassin’s blood (Ingested)","Carrion crawler mucus  (Contact)","Drow poison  (Injury)","Essence of ether  (Inhaled)","Malice  (Inhaled)","Pale tincture  (Ingested)","Serpent venom  (Injury)","Truth serum  (Ingested)"];
+poisonUncommon = ["Assassin's blood (Ingested)","Carrion crawler mucus  (Contact)","Drow poison  (Injury)","Essence of ether  (Inhaled)","Malice  (Inhaled)","Pale tincture  (Ingested)","Serpent venom  (Injury)","Truth serum  (Ingested)"];
 Rare = ["Torpor  (Ingested)","Burnt othur fumes  (Inhaled)","Oil of taggit  (Contact)"];
 VeryRare =["Wyvern  poison (Injury)","Purple worm poison (Injury)","Midnight tears  (Ingested)"]
 
@@ -2177,7 +2259,7 @@ else	{
 if (racetxt != "Human")
 	abOutput += "<br>"
 
-abOutput += "<b>Abilities:</b> ";
+abOutput += "<b>Class Features:</b> ";
 
 console.log("Racial bonuses:");
 for (i=0;i<6;i++)
@@ -3566,6 +3648,7 @@ switch (cl) {
 
 		abOutput += "Expertise, Sneak Attack ("+ x + "d6), Thieves' Cant";				
 		languageOutput += ", Thieves' Cant";
+
 		if (level > 1) {
 			abOutput += ", Cunning Action";				
 		}
@@ -3625,7 +3708,6 @@ switch (cl) {
 
 		abOutput += "Expertise, Sneak Attack ("+ x + "d6), Thieves' Cant";				
 		languageOutput += ", Thieves' Cant";
-
 
 		if (level > 1) {
 			abOutput += ", Cunning Action";				
@@ -4403,7 +4485,7 @@ switch (bg) {
 		
 
 			if (personality==1)
-				bgText += "I idolize a particular hero of my faith, and constantly refer to that person’s deeds and example. ";
+				bgText += "I idolize a particular hero of my faith, and constantly refer to that person's deeds and example. ";
 			if (personality==2)
 				bgText += "I can find common ground between the fiercest enemies, empathizing with them and always working towards peace. ";
 			if (personality==3)
@@ -4416,9 +4498,9 @@ switch (bg) {
 			if (personality==6)
 				bgText += "I am tolerant (or intolerant) of other faiths and respect (or condemn) the worship of other gods. ";
 			if (personality==7)
-				bgText += "I've enjoyed fine food, drink, and high society among my temple’s elite. Rough living grates on me. ";
+				bgText += "I've enjoyed fine food, drink, and high society among my temple's elite. Rough living grates on me. ";
 			if (personality==8)
-				bgText += "I’ve spent so long in the temple that I have little practical experience dealing with people in the outside world. ";
+				bgText += "I've spent so long in the temple that I have little practical experience dealing with people in the outside world. ";
 		
 
 			while (x==personality) {
@@ -4437,11 +4519,11 @@ switch (bg) {
 		if (ideal==3)
 			bgText += "Change. We must help bring about the changes the gods are constantly working in the world. (Chaotic)<br>";
 		if (ideal==4)
-			bgText += "Power. I hope to one day rise to the top of my faith’s religious hierarchy. (Lawful)<br>";
+			bgText += "Power. I hope to one day rise to the top of my faith's religious hierarchy. (Lawful)<br>";
 		if (ideal==5)
 			bgText += "Faith. I trust that my deity will guide my actions, I have faith that if I work hard, things will go well. (Lawful)<br>";
 		if (ideal==6)
-			bgText += "Aspiration. I seek to prove myself worthy of my god’s favor by matching my actions against his or her teachings. (Any)<br>";
+			bgText += "Aspiration. I seek to prove myself worthy of my god's favor by matching my actions against his or her teachings. (Any)<br>";
 		
 		
 		bgText += "<span class=\"bg\">Bond:</span>  ";
@@ -4463,7 +4545,7 @@ switch (bg) {
 		if (flaw==1)
 			bgText += "I judge others harshly, and myself even more severely.";
 		if (flaw==2)
-			bgText += "I put too much trust in those who wield power within my temple’s hierarchy.";
+			bgText += "I put too much trust in those who wield power within my temple's hierarchy.";
 		if (flaw==3)
 			bgText += "My piety sometimes leads me to blindly trust those that profess faith in my god.";
 		if (flaw==4)
@@ -4488,7 +4570,7 @@ switch (bg) {
 		if (x==1)
 			bgOutput += "(I shave coins or forge documents.)";
 		if (x==2)
-			bgOutput += "(I insinuate myself into people’s lives to prey on their weakness and secure their fortunes.)";
+			bgOutput += "(I insinuate myself into people's lives to prey on their weakness and secure their fortunes.)";
 		if (x==3)
 			bgOutput += "(I put on new identities like clothes.)";
 		if (x==4)
@@ -4513,9 +4595,9 @@ switch (bg) {
 			if (personality==3)
 				bgText += "Flattery is my preferred trick for getting what I want. ";
 			if (personality==4)
-				bgText += "I’m a born gambler who can't resist taking a risk for a potential payoff. ";
+				bgText += "I'm a born gambler who can't resist taking a risk for a potential payoff. ";
 			if (personality==5)
-				bgText += "I lie about almost everything, even when there’s no good reason to. ";
+				bgText += "I lie about almost everything, even when there's no good reason to. ";
 			if (personality==6)
 				bgText += "Sarcasm and insults are my weapons of choice. ";
 			if (personality==7)
@@ -4533,9 +4615,9 @@ switch (bg) {
 
 		bgText += "<br><span class=\"bg\">Ideal:</span> ";
 		if (ideal==1)
-			bgText += "Independence. I am a free spirit— no one tells me what to do. (Chaotic)";
+			bgText += "Independence. I am a free spirit- no one tells me what to do. (Chaotic)";
 		if (ideal==2)
-			bgText += "Fairness. I never target people who can’t afford to lose a few coins. (Lawful)";
+			bgText += "Fairness. I never target people who can't afford to lose a few coins. (Lawful)";
 		if (ideal==3)
 			bgText += "Charity. I distribute the money I acquire to the people who really need it. (Good)";
 		if (ideal==4)
@@ -4543,35 +4625,35 @@ switch (bg) {
 		if (ideal==5)
 			bgText += "Friendship. Material goods come and go. Bonds of friendship last forever. (Good)";
 		if (ideal==6)
-			bgText += "Aspiration. I’m determined to make something of myself. (Any)";
+			bgText += "Aspiration. I'm determined to make something of myself. (Any)";
 		
 
 		bgText += "<br><span class=\"bg\">Bond:</span> ";
 		if (bond==1)
-			bgText += "I owe everything to my mentor—a horrible person who’s probably rotting in jail somewhere.";
+			bgText += "I owe everything to my mentor-a horrible person who's probably rotting in jail somewhere.";
 		if (bond==2)
-			bgText += "Somewhere out there, I have a child who doesn’t know me. I’m making the world better for him or her.";
+			bgText += "Somewhere out there, I have a child who doesn't know me. I'm making the world better for him or her.";
 		if (bond==3)
-			bgText += "I come from a noble family, and one day I’ll reclaim my lands and title from those who stole them from me.";
+			bgText += "I come from a noble family, and one day I'll reclaim my lands and title from those who stole them from me.";
 		if (bond==4)
-			bgText += "A powerful person killed someone I love. Some day soon, I’ll have my revenge.";
+			bgText += "A powerful person killed someone I love. Some day soon, I'll have my revenge.";
 		if (bond==5)
-			bgText += "I swindled and ruined a person who didn’t deserve it. I seek to atone for my misdeeds but might never be able to forgive myself.";
+			bgText += "I swindled and ruined a person who didn't deserve it. I seek to atone for my misdeeds but might never be able to forgive myself.";
 		if (bond==6)
 			bgText += "I fleeced the wrong person and must work to ensure that this individual never crosses paths with me or those I care about.";
 		
 
 		bgText += "<br><span class=\"bg\">Flaw:</span> ";
 		if (flaw==1)
-			bgText += "I can’t resist a pretty face.";
+			bgText += "I can't resist a pretty face.";
 		if (flaw==2)
 			bgText += "I'm always in debt. I spend my ill-gotten gains on decadent luxuries faster than I bring them in..";
 		if (flaw==3)
-			bgText += "I’m convinced that no one could ever fool me the way I fool others.";
+			bgText += "I'm convinced that no one could ever fool me the way I fool others.";
 		if (flaw==4)
-			bgText += "I’m too greedy for my own good. I can’t resist taking a risk if there’s money involved.";
+			bgText += "I'm too greedy for my own good. I can't resist taking a risk if there's money involved.";
 		if (flaw==5)
-			bgText += "I can’t resist swindling people who are more powerful than me.";
+			bgText += "I can't resist swindling people who are more powerful than me.";
 		if (flaw==6)
 			bgText += "I hate to admit it and will hate myself for it, but I'll run and preserve my own hide if the going gets tough.";
 
@@ -4639,7 +4721,7 @@ switch (bg) {
 		
 		bgText += "<br><span class=\"bg\">Ideal:</span> ";
 		if (ideal==1)
-			bgText += "Honor. I don’t steal from others in the trade. (Lawful)";
+			bgText += "Honor. I don't steal from others in the trade. (Lawful)";
 		if (ideal==2)
 			bgText += "Freedom. Chains are meant to be broken, as are those who would forge them. (Chaotic)";
 		if (ideal==3)
@@ -4647,13 +4729,13 @@ switch (bg) {
 		if (ideal==4)
 			bgText += "Greed.  I will do whatever it takes to become wealthy. (Evil)";
 		if (ideal==5)
-			bgText += "People. I’m loyal to my friends, not to any ideals, and everyone else can take a trip down the Styx for all I care. (Neutral)";
+			bgText += "People. I'm loyal to my friends, not to any ideals, and everyone else can take a trip down the Styx for all I care. (Neutral)";
 		if (ideal==6)
-			bgText += "Redemption. There’s a spark of good in everyone. (Good)";
+			bgText += "Redemption. There's a spark of good in everyone. (Good)";
 		
 		bgText += "<br><span class=\"bg\">Bond:</span> ";
 		if (bond==1)
-			bgText += "I’m trying to pay off an old debt I owe to a generous benefactor.";
+			bgText += "I'm trying to pay off an old debt I owe to a generous benefactor.";
 		if (bond==2)
 			bgText += "My ill-gotten gains go to support my family.";
 		if (bond==3)
@@ -4661,23 +4743,23 @@ switch (bg) {
 		if (bond==4)
 			bgText += "I will become the greatest thief that ever lived.";
 		if (bond==5)
-			bgText += "I’m guilty of a terrible crime. I hope I can redeem myself for it.";
+			bgText += "I'm guilty of a terrible crime. I hope I can redeem myself for it.";
 		if (bond==6)
 			bgText += "Someone I loved died because of a mistake I made. That will never happen again.";
 		
 		bgText += "<br><span class=\"bg\">Flaw:</span> ";
 		if (flaw==1)
-			bgText += "When I see something valuable, I can’t think about anything but how to steal it.";
+			bgText += "When I see something valuable, I can't think about anything but how to steal it.";
 		if (flaw==2)
 			bgText += "When faced with a choice between money and my friends, I usually choose the money.";
 		if (flaw==3)
-			bgText += "If there’s a plan, I’ll forget it. If I don’t forget it, I’ll ignore it.";
+			bgText += "If there's a plan, I'll forget it. If I don't forget it, I'll ignore it.";
 		if (flaw==4)
-			bgText += "I have a “tell” that reveals when I'm lying.";
+			bgText += "I have a \"tell\" that reveals when I'm lying.";
 		if (flaw==5)
 			bgText += "I turn tail and run when things look bad.";
 		if (flaw==6)
-			bgText += "An innocent person is in prison for a crime that I committed. I’m okay with that.";
+			bgText += "An innocent person is in prison for a crime that I committed. I'm okay with that.";
 		break;
 	case(4):
 		skLearn[0] = true;
@@ -4708,15 +4790,15 @@ switch (bg) {
 			if (personality==2)
 				bgText += "Whenever I come to a new place, I collect local rumors and spread gossip. ";
 			if (personality==3)
-				bgText += "I’m a hopeless romantic, always searching for that “special someone.” ";
+				bgText += "I'm a hopeless romantic, always searching for that \"special someone.\" ";
 			if (personality==4)
 				bgText += "Nobody stays angry at me or around me for long, since I can defuse any amount of tension. ";
 			if (personality==5)
 				bgText += "I love a good insult, even one directed at me. ";
 			if (personality==6)
-				bgText += "I get bitter if I’m not the center of attention. ";
+				bgText += "I get bitter if I'm not the center of attention. ";
 			if (personality==7)
-				bgText += "I’ll settle for nothing less than perfection. ";
+				bgText += "I'll settle for nothing less than perfection. ";
 			if (personality==8)
 				bgText += "I change my mood or my mind as quickly as I change key in a song. ";
 			while (x==personality) {
@@ -4735,9 +4817,9 @@ switch (bg) {
 		if (ideal==3)
 			bgText += "Creativity. The world is in need of new ideas and bold action. (Chaotic)";
 		if (ideal==4)
-			bgText += "Greed. I’m only in it for the money and fame. (Evil)";
+			bgText += "Greed. I'm only in it for the money and fame. (Evil)";
 		if (ideal==5)
-			bgText += "People. I like seeing the smiles on people’s faces when I perform. That’s all that matters. (Neutral)";
+			bgText += "People. I like seeing the smiles on people's faces when I perform. That's all that matters. (Neutral)";
 		if (ideal==6)
 			bgText += "Honesty. Art should reflect the soul; it should come from within and reveal who we really are. (Any)";
 
@@ -4745,11 +4827,11 @@ switch (bg) {
 		if (bond==1)
 			bgText += "My instrument is my most treasured possession, and it reminds me of someone I love.";
 		if (bond==2)
-			bgText += "Someone stole my precious instrument, and someday I’ll get it back.";
+			bgText += "Someone stole my precious instrument, and someday I'll get it back.";
 		if (bond==3)
 			bgText += "I want to be famous, whatever it takes.";
 		if (bond==4)
-			bgText += "I idolize a hero of the old tales and measure my deeds against that person’s.";
+			bgText += "I idolize a hero of the old tales and measure my deeds against that person's.";
 		if (bond==5)
 			bgText += "I will do anything to prove myself superior to my hated rival.";
 		if (bond==6)
@@ -4757,9 +4839,9 @@ switch (bg) {
 		  
 		bgText += "<br><span class=\"bg\">Flaw:</span> ";
 		if (flaw==1)
-			bgText += "I’ll do anything to win fame and renown.";
+			bgText += "I'll do anything to win fame and renown.";
 		if (flaw==2)
-			bgText += "I’m a sucker for a pretty face.";
+			bgText += "I'm a sucker for a pretty face.";
 		if (flaw==3)
 			bgText += "A scandal prevents me from ever going home again. That kind of trouble seems to follow me around.";
 		if (flaw==4)
@@ -4798,21 +4880,21 @@ switch (bg) {
 
 
 			if (personality==1)
-				bgText += "I  believe that anything worth doing is worth doing right. I can’t help it— I’m a perfectionist. ";
+				bgText += "I  believe that anything worth doing is worth doing right. I can't help it- I'm a perfectionist. ";
 			if (personality==2)
-				bgText += "I’m a snob who looks down on those who can’t appreciate fine art. ";
+				bgText += "I'm a snob who looks down on those who can't appreciate fine art. ";
 			if (personality==3)
 				bgText += "I always want to know how things work and what makes people tick. ";
 			if (personality==4)
-				bgText += "I’m full of witty aphorisms and have a proverb for every occasion. ";
+				bgText += "I'm full of witty aphorisms and have a proverb for every occasion. ";
 			if (personality==5)
-				bgText += "I’m rude to people who lack my commitment to hard work and fair play. ";
+				bgText += "I'm rude to people who lack my commitment to hard work and fair play. ";
 			if (personality==6)
 				bgText += " I like to talk at length about my profession. ";
 			if (personality==7)
-				bgText += " I don’t part with my money easily and will haggle tirelessly to get the best deal possible. ";
+				bgText += " I don't part with my money easily and will haggle tirelessly to get the best deal possible. ";
 			if (personality==8)
-				bgText += "I’m well known for my work, and I want to make sure everyone appreciates it. I'm always taken aback when people haven’t heard of me. ";
+				bgText += "I'm well known for my work, and I want to make sure everyone appreciates it. I'm always taken aback when people haven't heard of me. ";
 			
 			while (x==personality) {
 				personality=Math.floor((Math.random() * 8) +1);
@@ -4831,9 +4913,9 @@ switch (bg) {
 		if (ideal==3)
 			bgText += "Freedom. Everyone should be free to pursue his or her own livelihood. (Chaotic)";
 		if (ideal==4)
-			bgText += "Greed. I’m only in it for the money. (Evil)";
+			bgText += "Greed. I'm only in it for the money. (Evil)";
 		if (ideal==5)
-			bgText += "People. I’m committed to the people I care about, not to ideals. (Neutral)";
+			bgText += "People. I'm committed to the people I care about, not to ideals. (Neutral)";
 		if (ideal==6)
 			bgText += "Aspiration. I work hard to be the best there is at my craft.";
 		
@@ -4846,11 +4928,11 @@ switch (bg) {
 		if (bond==1)
 			bgText += "The workshop where I learned my trade is the most important place in the world to me.";
 		if (bond==2)
-			bgText += "I created a great work for someone, and then found them unworthy to receive it. I’m still looking for someone worthy.";
+			bgText += "I created a great work for someone, and then found them unworthy to receive it. I'm still looking for someone worthy.";
 		if (bond==3)
 			bgText += "I owe my guild a great debt for forging me into the person I am today.";
 		if (bond==4)
-			bgText += "I pursue wealth to secure someone’s love.";
+			bgText += "I pursue wealth to secure someone's love.";
 		if (bond==5)
 			bgText += "One day I will return to my guild and prove that I am the greatest artisan of them all.";
 		if (bond==6)
@@ -4858,17 +4940,17 @@ switch (bg) {
 
 		bgText += "<br><span class=\"bg\">Flaw:</span> ";
 		if (flaw==1)
-			bgText += "I’ll do anything to get my hands on something rare or priceless.";
+			bgText += "I'll do anything to get my hands on something rare or priceless.";
 		if (flaw==2)
-			bgText += "I’m quick to assume that someone is trying to cheat me.";
+			bgText += "I'm quick to assume that someone is trying to cheat me.";
 		if (flaw==3)
 			bgText += "No one must ever learn that I once stole money from guild coffers.";
 		if (flaw==4)
-			bgText += "I’m never satisfied with what I have— I always want more.";
+			bgText += "I'm never satisfied with what I have- I always want more.";
 		if (flaw==5)
 			bgText += "I would kill to acquire a noble title.";
 		if (flaw==6)
-			bgText += "I’m horribly jealous of anyone who can outshine my handiwork. Everywhere I go, I’m surrounded by rivals.";
+			bgText += "I'm horribly jealous of anyone who can outshine my handiwork. Everywhere I go, I'm surrounded by rivals.";
 
 		break;
 
@@ -4892,7 +4974,7 @@ switch (bg) {
 		if (x==1)
 			bgOutput += "(I was partaking of communal living in accordance with the dictates of a religious order.)";
 		if (x==2)
-			bgOutput += "(I was exiled for a crime I didn’t commit.)";
+			bgOutput += "(I was exiled for a crime I didn't commit.)";
 		if (x==3)
 			bgOutput += "(I retreated from society after a life-altering event.)";
 		if (x==4)
@@ -4914,7 +4996,7 @@ switch (bg) {
 
 
 			if (personality==1)
-				bgText += "I’ve been isolated for so long that I rarely speak, preferring gestures and the occasional grunt. ";
+				bgText += "I've been isolated for so long that I rarely speak, preferring gestures and the occasional grunt. ";
 			if (personality==2)
 				bgText += "I am utterly serene, even in the face of disaster. ";
 			if (personality==3)
@@ -4922,7 +5004,7 @@ switch (bg) {
 			if (personality==4)
 				bgText += "I feel tremendous empathy for all who suffer. ";
 			if (personality==5)
-				bgText += "I’m oblivious to etiquette and social expectations. ";
+				bgText += "I'm oblivious to etiquette and social expectations. ";
 			if (personality==6)
 				bgText += "I connect everything that happens to me to a grand, cosmic plan. ";
 			if (personality==7)
@@ -4951,7 +5033,7 @@ switch (bg) {
 		if (ideal==5)
 			bgText += "Live and Let Live. Meddling in the affairs of others only causes trouble. (Neutral)";
 		if (ideal==6)
-			bgText += "Self-Knowledge. If you know yourself, there’s nothing left to know. (Any)";
+			bgText += "Self-Knowledge. If you know yourself, there's nothing left to know. (Any)";
 		
 
  
@@ -4961,7 +5043,7 @@ switch (bg) {
 		if (bond==2)
 			bgText += "I entered seclusion to hide from the ones who might still be hunting me. I must someday confront them.";
 		if (bond==3)
-			bgText += "I’m still seeking the enlightenment I pursued in my seclusion, and it still eludes me.";
+			bgText += "I'm still seeking the enlightenment I pursued in my seclusion, and it still eludes me.";
 		if (bond==4)
 			bgText += "I entered seclusion because I loved someone I could not have.";
 		if (bond==5)
@@ -4980,9 +5062,9 @@ switch (bg) {
 		if (flaw==4)
 			bgText += "I let my need to win arguments overshadow friendships and harmony.";
 		if (flaw==5)
-			bgText += "I’d risk too much to uncover a lost bit of knowledge.";
+			bgText += "I'd risk too much to uncover a lost bit of knowledge.";
 		if (flaw==6)
-			bgText += "I like keeping secrets and won’t share them with anyone.";
+			bgText += "I like keeping secrets and won't share them with anyone.";
 
 		break;
 	case(7):
@@ -4999,7 +5081,7 @@ switch (bg) {
 		bgOutput += "</b>"
 		x=Math.floor(Math.random() * 10);
 		if (x==0)
-			bgOutput +="(I stood up to a tyrant’s agents.)";
+			bgOutput +="(I stood up to a tyrant's agents.)";
 		if (x==1)
 			bgOutput += "(I saved people during a natural disaster.)";
 		if (x==2)
@@ -5009,15 +5091,15 @@ switch (bg) {
 		if (x==4)
 			bgOutput += "(I led a militia to fight off an invading army.)";
 		if (x==5)
-			bgOutput += "(I broke into a tyrant’s castle and stole weapons to arm the people.)";
+			bgOutput += "(I broke into a tyrant's castle and stole weapons to arm the people.)";
 		if (x==6)
-			bgOutput += "(I trained the peasantry to use farm implements as weapons against a tyrant’s soldiers.)";
+			bgOutput += "(I trained the peasantry to use farm implements as weapons against a tyrant's soldiers.)";
 		if (x==7)
 			bgOutput += "(A lord rescinded an unpopular decree after I led a symbolic act of protest against it.)";
 		if (x==8)
 			bgOutput += "(A celestial, fey, or similar creature gave me a blessing or revealed my secret origin.)";
 		if (x==9)
-			bgOutput += "(Recruited into a lord’s army, I rose to leadership and was commended for my heroism.)";
+			bgOutput += "(Recruited into a lord's army, I rose to leadership and was commended for my heroism.)";
 
 
 		bgText += "<br><span class=\"bg\">Personality:</span> ";
@@ -5030,13 +5112,13 @@ switch (bg) {
 			if (personality==1)
 				bgText += "I judge people by their actions, not their words. ";
 			if (personality==2)
-				bgText += "If someone is in trouble, I’m always ready to lend help. ";
+				bgText += "If someone is in trouble, I'm always ready to lend help. ";
 			if (personality==3)
 				bgText += "When I set my mind to something, I follow through no matter what gets in my way. ";
 			if (personality==4)
 				bgText += "I have a strong sense of fair play and always try to find the most equitable solution to arguments. ";
 			if (personality==5)
-				bgText += "I’m confident in my own abilities and do what I can to instill confidence in others. ";
+				bgText += "I'm confident in my own abilities and do what I can to instill confidence in others. ";
 			if (personality==6)
 				bgText += "Thinking is for other people. I prefer action. ";
 			if (personality==7)
@@ -5060,9 +5142,9 @@ switch (bg) {
 		if (ideal==3)
 			bgText += "Freedom. Tyrants must not be allowed to oppress the people. (Chaotic)";
 		if (ideal==4)
-			bgText += "Might. If I become strong, I can take what I want— what I deserve. (Evil)";
+			bgText += "Might. If I become strong, I can take what I want- what I deserve. (Evil)";
 		if (ideal==5)
-			bgText += "Sincerity. There’s no good in pretending to be something I’m not. (Neutral)";
+			bgText += "Sincerity. There's no good in pretending to be something I'm not. (Neutral)";
 		if (ideal==6)
 			bgText += "Destiny. Nothing and no one can steer me away from my higher calling. (Any)";
 		
@@ -5086,7 +5168,7 @@ switch (bg) {
 		if (flaw==1)
 			bgText += "The tyrant who rules my land will stop at nothing to see me killed.";
 		if (flaw==2)
-			bgText += "I’m convinced of the significance of my destiny, and blind to my shortcomings and the risk of failure.";
+			bgText += "I'm convinced of the significance of my destiny, and blind to my shortcomings and the risk of failure.";
 		if (flaw==3)
 			bgText += "The people who knew me when I was young know my shameful secret, so I can never go home again.";
 		if (flaw==4)
@@ -5127,7 +5209,7 @@ switch (bg) {
 			if (personality==4)
 				bgText += "I take great pains to always look my best and follow the latest fashions. ";
 			if (personality==5)
-				bgText += "I don’t like to get my hands dirty, and I won’t be caught dead in unsuitable accommodations. ";
+				bgText += "I don't like to get my hands dirty, and I won't be caught dead in unsuitable accommodations. ";
 			if (personality==6)
 				bgText += "Despite my noble birth, I do not place myself above other folk. We all have the same blood. ";
 			if (personality==7)
@@ -5164,7 +5246,7 @@ switch (bg) {
 		if (bond==1)
 			bgText += "I will face any challenge to win the approval of my family.";
 		if (bond==2)
-			bgText += "My house’s alliance with another noble family must be sustained at all costs.";
+			bgText += "My house's alliance with another noble family must be sustained at all costs.";
 		if (bond==3)
 			bgText += "Nothing is more important than the other members of my family.";
 		if (bond==4)
@@ -5181,7 +5263,7 @@ switch (bg) {
 		if (flaw==2)
 			bgText += "I hide a truly scandalous secret that could ruin my family forever.";
 		if (flaw==3)
-			bgText += "I too often hear veiled insults and threats in every word addressed to me, and I’m quick to anger.";
+			bgText += "I too often hear veiled insults and threats in every word addressed to me, and I'm quick to anger.";
 		if (flaw==4)
 			bgText += "I  have an insatiable desire for carnal pleasures.";
 		if (flaw==5)
@@ -5237,17 +5319,17 @@ switch (bg) {
 
 
 			if (personality==1)
-				bgText += "I’m driven by a wanderlust that led me away from home. ";
+				bgText += "I'm driven by a wanderlust that led me away from home. ";
 			if (personality==2)
 				bgText += "I watch over my friends as if they were a litter of newborn pups. ";
 			if (personality==3)
-				bgText += "I once ran twenty-five miles without stopping to warn to my clan of an approaching orc horde. I’d do it again if I had to. ";
+				bgText += "I once ran twenty-five miles without stopping to warn to my clan of an approaching orc horde. I'd do it again if I had to. ";
 			if (personality==4)
-				bgText += "I place no stock in wealthy or well-mannered folk. Money and manners won’t save you from a hungry owlbear. ";
+				bgText += "I place no stock in wealthy or well-mannered folk. Money and manners won't save you from a hungry owlbear. ";
 			if (personality==5)
 				bgText += "I have a lesson for every situation, drawn from observing nature. ";
 			if (personality==6)
-				bgText += "I’m always picking things up, absently fiddling with them, and sometimes accidentally breaking them. ";
+				bgText += "I'm always picking things up, absently fiddling with them, and sometimes accidentally breaking them. ";
 			if (personality==7)
 				bgText += "I feel far more comfortable around animals than people. ";
 			if (personality==8)
@@ -5265,7 +5347,7 @@ switch (bg) {
 		if (ideal==1)
 			bgText += "Change. Life is like the seasons, in constant change, and we must change with it. (Chaotic)";
 		if (ideal==2)
-			bgText += "Greater Good. It is each person’s responsibility to make the most happiness for the whole tribe. (Good)";
+			bgText += "Greater Good. It is each person's responsibility to make the most happiness for the whole tribe. (Good)";
 		if (ideal==3)
 			bgText += "Honor. If I dishonor myself, I dishonor my whole clan. (Lawful)";
 		if (ideal==4)
@@ -5295,15 +5377,15 @@ switch (bg) {
 		if (flaw==1)
 			bgText += "I am too enamored of ale, wine, and other intoxicants.";
 		if (flaw==2)
-			bgText += "There’s no room for caution in a life lived to the fullest.";
+			bgText += "There's no room for caution in a life lived to the fullest.";
 		if (flaw==3)
-			bgText += "I remember every insult I’ve received and nurse a silent resentment toward anyone who’s ever wronged me.";
+			bgText += "I remember every insult I've received and nurse a silent resentment toward anyone who's ever wronged me.";
 		if (flaw==4)
 			bgText += "I am slow to trust members of other races, tribes, and societies.";
 		if (flaw==5)
 			bgText += "Violence is my answer to almost any challenge.";
 		if (flaw==6)
-			bgText += "Don’t expect me to save those who can’t save themselves. It is nature’s way that the strong thrive and the weak perish.";
+			bgText += "Don't expect me to save those who can't save themselves. It is nature's way that the strong thrive and the weak perish.";
 
 		break;
 	case(10):
@@ -5349,19 +5431,19 @@ switch (bg) {
 			if (personality==1)
 				bgText += "I use polysyllabic words that convey the impression of great erudition. ";
 			if (personality==2)
-				bgText += "I've read every book in the world’s greatest libraries—or I like to boast that I have. ";
+				bgText += "I've read every book in the world's greatest libraries-or I like to boast that I have. ";
 			if (personality==3)
-				bgText += "I'm used to helping out those who aren’t as smart as I am, and I patiently explain anything and everything to others. ";
+				bgText += "I'm used to helping out those who aren't as smart as I am, and I patiently explain anything and everything to others. ";
 			if (personality==4)
-				bgText += "There’s nothing I like more than a good mystery. ";
+				bgText += "There's nothing I like more than a good mystery. ";
 			if (personality==5)
-				bgText += "I’m willing to listen to every side of an argument before I make my own judgment. ";
+				bgText += "I'm willing to listen to every side of an argument before I make my own judgment. ";
 			if (personality==6)
 				bgText += "I . . . speak . . . slowly .  . . when talking .  .  . to idiots, . . . which . . . almost . . . everyone . .  . is . . . compared . . . to me. ";
 			if (personality==7)
 				bgText += "I am horribly, horribly awkward in social situations. ";
 			if (personality==8)
-				bgText += "I’m convinced that people are always trying to steal my secrets. ";
+				bgText += "I'm convinced that people are always trying to steal my secrets. ";
 			while (x==personality) {
 				personality=Math.floor((Math.random() * 8) +1);
 			}
@@ -5394,7 +5476,7 @@ switch (bg) {
 		if (bond==3)
 			bgText += "I work to preserve a library, university, scriptorium, or monastery.";
 		if (bond==4)
-			bgText += "My life’s work is a series of tomes related to a specific field of lore.";
+			bgText += "My life's work is a series of tomes related to a specific field of lore.";
 		if (bond==5)
 			bgText += "I've been searching my whole life for the answer to a certain question.";
 		if (bond==6)
@@ -5412,7 +5494,7 @@ switch (bg) {
 		if (flaw==5)
 			bgText += "I speak without really thinking through my words, invariably insulting others.";
 		if (flaw==6)
-			bgText += "I can’t keep a secret to save my life, or anyone else’s.";
+			bgText += "I can't keep a secret to save my life, or anyone else's.";
 
 		break;
 	case(11):
@@ -5464,21 +5546,21 @@ switch (bg) {
 		if (ideal==2)
 			bgText += "Fairness. We all do the work, so we all share in the rewards. (Lawful)";
 		if (ideal==3)
-			bgText += "Freedom. The sea is freedom—the freedom to go anywhere and do anything. (Chaotic)";
+			bgText += "Freedom. The sea is freedom-the freedom to go anywhere and do anything. (Chaotic)";
 		if (ideal==4)
-			bgText += "Mastery. I’m a predator, and the other ships on the sea are my prey. (Evil)";
+			bgText += "Mastery. I'm a predator, and the other ships on the sea are my prey. (Evil)";
 		if (ideal==5)
-			bgText += "People. I’m committed to my crewmates, not to ideals. (Neutral)";
+			bgText += "People. I'm committed to my crewmates, not to ideals. (Neutral)";
 		if (ideal==6)
-			bgText += "Aspiration. Someday I’ll own my own ship and chart my own destiny. (Any)";
+			bgText += "Aspiration. Someday I'll own my own ship and chart my own destiny. (Any)";
 		
 		bgText += "<br><span class=\"bg\">Bond:</span> ";
 		if (bond==1)
-			bgText += "I’m loyal to my captain first, everything else second.";
+			bgText += "I'm loyal to my captain first, everything else second.";
 		if (bond==2)
-			bgText += "The ship is most important—crewmates and captains come and go.";
+			bgText += "The ship is most important-crewmates and captains come and go.";
 		if (bond==3)
-			bgText += "I’ll always remember my first ship.";
+			bgText += "I'll always remember my first ship.";
 		if (bond==4)
 			bgText += "In a harbor town, I have a paramour whose eyes nearly stole me from the sea.";
 		if (bond==5)
@@ -5489,15 +5571,15 @@ switch (bg) {
 
 		bgText += "<br><span class=\"bg\">Flaw:</span> ";
 		if (flaw==1)
-			bgText += "I follow orders, even if I think they’re wrong.";
+			bgText += "I follow orders, even if I think they're wrong.";
 		if (flaw==2)
-			bgText += "I’ll say anything to avoid having to do extra work.";
+			bgText += "I'll say anything to avoid having to do extra work.";
 		if (flaw==3)
 			bgText += "Once someone questions my courage, I never back down no matter how dangerous the situation.";
 		if (flaw==4)
-			bgText += "Once I start drinking, it’s hard for me to stop.";
+			bgText += "Once I start drinking, it's hard for me to stop.";
 		if (flaw==5)
-			bgText += "I can’t help but pocket loose coins and other trinkets I come across.";
+			bgText += "I can't help but pocket loose coins and other trinkets I come across.";
 		if (flaw==6)
 			bgText += "My pride will probably lead to my destruction.";
 
@@ -5542,11 +5624,11 @@ switch (bg) {
 			if (personality==1)
 				bgText += "I'm always polite and respectful. ";
 			if (personality==2)
-				bgText += "I’m haunted by memories of war. I can’t get the images of violence out of my mind. ";
+				bgText += "I'm haunted by memories of war. I can't get the images of violence out of my mind. ";
 			if (personality==3)
-				bgText += "I’ve lost too many friends, and I’m slow to make new ones. ";
+				bgText += "I've lost too many friends, and I'm slow to make new ones. ";
 			if (personality==4)
-				bgText += "I’m full of inspiring and cautionary tales from my military experience relevant to almost every combat situation. ";
+				bgText += "I'm full of inspiring and cautionary tales from my military experience relevant to almost every combat situation. ";
 			if (personality==5)
 				bgText += "I can stare down a hell hound without flinching. ";
 			if (personality==6)
@@ -5574,7 +5656,7 @@ switch (bg) {
 		if (ideal==4)
 			bgText += "Might. In life as in war, the stronger force wins. (Evil)";
 		if (ideal==5)
-			bgText += "Live and Let Live. Ideals aren’t worth killing over or going to war for. (Neutral)";
+			bgText += "Live and Let Live. Ideals aren't worth killing over or going to war for. (Neutral)";
 		if (ideal==6)
 			bgText += "Nation. My city, nation, or people are all that matter. (Any)";
 		 
@@ -5586,7 +5668,7 @@ switch (bg) {
 		if (bond==3)
 			bgText += "My honor is my life.";
 		if (bond==4)
-			bgText += "I’ll never forget the crushing defeat my company suffered or the enemies who dealt it.";
+			bgText += "I'll never forget the crushing defeat my company suffered or the enemies who dealt it.";
 		if (bond==5)
 			bgText += "Those who fight beside me are those worth dying for.";
 		if (bond==6)
@@ -5599,13 +5681,13 @@ switch (bg) {
 		if (flaw==2)
 			bgText += "I have little respect for anyone who is not a proven warrior.";
 		if (flaw==3)
-			bgText += "I made a terrible mistake in battle cost many lives— and I would do anything to keep that mistake secret.";
+			bgText += "I made a terrible mistake in battle cost many lives- and I would do anything to keep that mistake secret.";
 		if (flaw==4)
 			bgText += "My hatred of my enemies is blind and unreasoning.";
 		if (flaw==5)
 			bgText += "I obey the law, even if the law causes misery.";
 		if (flaw==6)
-			bgText += "I’d rather eat my armor than admit when I’m wrong.";
+			bgText += "I'd rather eat my armor than admit when I'm wrong.";
 
 
 		break;
@@ -5639,9 +5721,9 @@ switch (bg) {
 			if (personality==5)
 				bgText += "I eat like a pig and have bad manners. ";
 			if (personality==6)
-				bgText += "I think anyone who’s nice to me is hiding evil intent. ";
+				bgText += "I think anyone who's nice to me is hiding evil intent. ";
 			if (personality==7)
-				bgText += "I don’t like to bathe. ";
+				bgText += "I don't like to bathe. ";
 			if (personality==8)
 				bgText += "I bluntly say what other people are hinting at or hiding. ";
 
@@ -5664,13 +5746,13 @@ switch (bg) {
 		if (ideal==4)
 			bgText += "Retribution. The rich need to be shown what life and death are like in the gutters. (Evil)";
 		if (ideal==5)
-			bgText += "People. I help the people who help me—that’s what keeps us alive. (Neutral)";
+			bgText += "People. I help the people who help me-that's what keeps us alive. (Neutral)";
 		if (ideal==6)
 			bgText += "Aspiration. I'm going to prove that I'm worthy of a better life.";
 		
 		bgText += "<br><span class=\"bg\">Bond:</span> ";
 		if (bond==1)
-			bgText += "My town or city is my home, and I’ll fight to defend it.";
+			bgText += "My town or city is my home, and I'll fight to defend it.";
 		if (bond==2)
 			bgText += "I sponsor an orphanage to keep others from enduring what I was forced to endure.";
 		if (bond==3)
@@ -5678,21 +5760,21 @@ switch (bg) {
 		if (bond==4)
 			bgText += "I owe a debt I can never repay to the person who took pity on me.";
 		if (bond==5)
-			bgText += "I escaped my life of poverty by robbing an important person, and I’m wanted for it.";
+			bgText += "I escaped my life of poverty by robbing an important person, and I'm wanted for it.";
 		if (bond==6)
-			bgText += "No one else should have to endure the hardships I’ve been through.";
+			bgText += "No one else should have to endure the hardships I've been through.";
 		
 		bgText += "<br><span class=\"bg\">Flaw:</span> ";
 		if (flaw==1)
 			bgText += "If I'm outnumbered, I will run away from a fight.";
 		if (flaw==2)
-			bgText += "Gold seems like a lot of money to me, and I’ll do just about anything for more of it.";
+			bgText += "Gold seems like a lot of money to me, and I'll do just about anything for more of it.";
 		if (flaw==3)
 			bgText += "I will never fully trust anyone other than myself.";
 		if (flaw==4)
-			bgText += "I’d rather kill someone in their sleep then fight fair.";
+			bgText += "I'd rather kill someone in their sleep then fight fair.";
 		if (flaw==5)
-			bgText += "It’s not stealing if I need it more than someone else.";
+			bgText += "It's not stealing if I need it more than someone else.";
 		if (flaw==6)
 			bgText += "People who can't take care of themselves get what they deserve.";
 		break;
@@ -6214,7 +6296,7 @@ if (cl==2) {
 	while (x > 0) {
 		tempAr = ba3;
 		if (Math.random() < 0.5)
-			tempAr=["Bestow Curse","Clairvoyance","Dispel Magic","Fear","Glyph of Warding","Hypnotic Pattern","Leomund’s Tiny Hut","Major Image","Stinking Cloud"];
+			tempAr=["Bestow Curse","Clairvoyance","Dispel Magic","Fear","Glyph of Warding","Hypnotic Pattern","Leomund's Tiny Hut","Major Image","Stinking Cloud"];
 
 		temp = tempAr[Math.floor(Math.random() * tempAr.length)];
 
@@ -6290,7 +6372,7 @@ if (cl==2) {
 		tempSpells=[];
 		x=2;
 		while (x>0) {
-			tempAr=["Ice Storm","Bigby’s Hand","CloudkilI","Cone of Cold","Conjure Elemental","Passwall","Wall of Force","Wall of Stone","Antilife Shell","Contagion","Insect Plague","Flame Strike","Death Ward","Conjure Volley","Conjure Woodland Beings","Banishing Smite"];
+			tempAr=["Ice Storm","Bigby's Hand","CloudkilI","Cone of Cold","Conjure Elemental","Passwall","Wall of Force","Wall of Stone","Antilife Shell","Contagion","Insect Plague","Flame Strike","Death Ward","Conjure Volley","Conjure Woodland Beings","Banishing Smite"];
 
 			temp = tempAr[Math.floor(Math.random() * tempAr.length)];
 			if (tempSpells.indexOf(temp) == -1) {
@@ -7894,8 +7976,8 @@ if (cl==14) {
 				tomeRituals.push("Meld into Stone");
 				tomeRituals.push("Feign Death");
 				tomeRituals.push("Meld into Stone");
-				tomeRituals.push("Leomund’s Tiny Hut");
-				tomeRituals.push("Leomund’s Tiny Hut");
+				tomeRituals.push("Leomund's Tiny Hut");
+				tomeRituals.push("Leomund's Tiny Hut");
 				tomeRituals.push("Water Breathing");
 				tomeRituals.push("Phantom Steed");
 				tomeRituals.push("Water Walk");
@@ -8292,7 +8374,7 @@ if (cl==15) {
 	while (x > 0) {
 		tempAr = wi3;
 		if (Math.random() < 0.66)
-			tempAr=["Animate Dead","Bestow Curse","Blink","Counterspell","Dispel Magic","Fear","Fireball","Fireball","Fly","Gaseous Form","Glyph of Warding","Haste","Hypnotic Pattern","Leomund’s Tiny Hut","Lightning Bolt","Lightning Bolt","Lightning Bolt","Magic Circle","Major Image","Protection from Energy","Slow","Stinking Cloud","Vampiric Touch"];
+			tempAr=["Animate Dead","Bestow Curse","Blink","Counterspell","Dispel Magic","Fear","Fireball","Fireball","Fly","Gaseous Form","Glyph of Warding","Haste","Hypnotic Pattern","Leomund's Tiny Hut","Lightning Bolt","Lightning Bolt","Lightning Bolt","Magic Circle","Major Image","Protection from Energy","Slow","Stinking Cloud","Vampiric Touch"];
 
 		temp = tempAr[Math.floor(Math.random() * tempAr.length)];
 
@@ -8342,7 +8424,7 @@ if (cl==15) {
 	while (x > 0) {
 		tempAr = wi4;
 		if (Math.random() < 0.5)
-			tempAr=["Banishment","Blight","Confusion","Conjure Minor Elementals","Dimension Door","Evard's Black Tentacles","Fire Shield","Greater Invisibility","Ice Storm","Mordenkainen’s Faithful Hound","Otiluke’s Resilient Sphere","Phantasmal Killer","Polymorph","Stoneskin","Wall of Fire"];
+			tempAr=["Banishment","Blight","Confusion","Conjure Minor Elementals","Dimension Door","Evard's Black Tentacles","Fire Shield","Greater Invisibility","Ice Storm","Mordenkainen's Faithful Hound","Otiluke's Resilient Sphere","Phantasmal Killer","Polymorph","Stoneskin","Wall of Fire"];
 
 		temp = tempAr[Math.floor(Math.random() * tempAr.length)];
 
@@ -8385,7 +8467,7 @@ if (cl==15) {
 	while (x > 0) {
 		tempAr = wi5;
 		if (Math.random() < 0.5)
-			tempAr=["Animate Objects","Bigby’s Hand","CloudkilI","Cone of Cold","Conjure Elemental","Dominate Person","Geas","Hold Monster","Legend Lore","Mislead","Passwall","Planar Binding","Seeming","Telekinesis","Teleportation Circle","Wall of Force","Wall of Stone"];
+			tempAr=["Animate Objects","Bigby's Hand","CloudkilI","Cone of Cold","Conjure Elemental","Dominate Person","Geas","Hold Monster","Legend Lore","Mislead","Passwall","Planar Binding","Seeming","Telekinesis","Teleportation Circle","Wall of Force","Wall of Stone"];
 
 		temp = tempAr[Math.floor(Math.random() * tempAr.length)];
 
@@ -10670,7 +10752,7 @@ if (myAr[0] == "Shield" && (myAr.length > 1)) {
 	}
 }
 
-arOutput+= "<b>Hit points: " + hp + "</b> &nbsp; Hit dice:  " + level + "d" + hd +"<br><b>Armor:  ";
+arOutput+= "<b>Hit points: " + hp + "</b><br>Hit dice:  " + level + "d" + hd +"<br><br><b>AC:  " + ac + "</b><br>Armor:  ";
 
 if (myAr.length == 0) {
 		arOutput += "None";
@@ -10697,8 +10779,8 @@ if (myAr.length == 1) {
 		arOutput += "+" + magicArmor + " ";
 	arOutput += myAr;
 }
-
-arOutput += "<br>AC:  " + ac + "</b><br>";
+arOutput += "<br>";
+//arOutput += "<br>AC:  " + ac + "</b><br>";
 
 
 
@@ -10788,7 +10870,225 @@ showAbil();
 if (al==true) {
 	output  +=   "<b>Faction:</b>  " + factions[myFaction] + " &nbsp; Lifestyle:  " + lifestyles[myLifestyle];
 }
+
+
+// Jeremy's New Output formatting stuff
+
+// MISC DATA UPDATES
+
+// make sure rogues are given the thief tool proficiency
+if (classtxt.includes("Rogue") == true && bg != 3 && bg != 13 && toOutput.includes("Thieves") == false) {
+	toOutput += ", Thieves\' tools";
+}
+
+//HEADER
+
+var data1 = output.split("<br>");
+
+var nameText = data1[0];
+var abilityScoreText = data1[1];
+var saveText = data1[2];
+var miscText = data1[3];
+
+output = nameText + "<br>" + miscText;
+
+
+// ABILITY SCORES
+
+var abilityNames = ["STR","DEX","CON","INT","WIS","CHA"]
+txtAbilScores = "<b><u>ABILITY SCORES</u></b><br>";
+
+for (i=0; i<6; i++) {
+
+  txtAbilScores += abilityNames[i] + ": ";
+  if (abil[i] < 10) {
+    txtAbilScores += " ";
+  }
+  txtAbilScores += abil[i] + " (" + showPlus(mod[i]);
+  if (mod[i] != saves[i]) {
+    txtAbilScores += "/" + showPlus(saves[i]);
+  }
+  txtAbilScores += ")<br>";
+}
+
+
+// PROF BONUS
+
+var txtProfBonus = "<b>Proficiency Bonus:</b> " + showPlus(prof) + "<br>";
+
+
+// SKILL PROFICIENCIES
+var txtSkillProfs = "<b><u>SKILL PROFICIENCIES</u></b><br>";
+
+mySkills.sort(function(a,b){return a-b});
+for (x=0;x < 18;x++)		{
+
+	if (skLearn[x] == true) {
+
+		//console.log("skills:" + mySkills + " /expertise:" + expertise);
+		// check if it's our expertise
+		if (expertise.indexOf(x) == -1) {
+			txtSkillProfs += "<b>" + skills[x] + repeatChar(".",(18-skills[x].length)) + showPlus( (mod[skAbil[x]] + prof) ) + "</b><br>";
+		} else{
+			txtSkillProfs += "<b>" + skills[x] + "*" + repeatChar(".",(17-skills[x].length)) + showPlus( (mod[skAbil[x]] + (prof*2)) ) + "</b><br>";
+		}
+		first=true;
+	}
+	else {
+		txtSkillProfs += skills[x] + repeatChar(".",(18-skills[x].length)) + showPlus( (mod[skAbil[x]] ) ) + "<br>";
+	}
+
+}
+if (toOutput.includes("Thieves") == true) {
+	if (burglar==true) {         // apparently burglar means expertise in thieves tools
+		txtSkillProfs += "<b>" + "Thieves\'s Tools" + "*" + repeatChar(".",(17-"Thieves\'s Tools".length)) + showPlus( (mod[1] + (prof*2)) ) + "</b><br>";
+	}
+	else {
+		txtSkillProfs += "<b>" + "Thieves\'s Tools" + repeatChar(".",(18-"Thieves\'s Tools".length)) + showPlus( (mod[1] + (prof)) ) + "</b><br>";
+	}
+}
+
+// ARMOR PROFICIENCIES
+var armorProfList = ["Light armor, Medium armor, Shields","Light armor","All armor, Shields","None"];
+var txtArmorProfs = "<b>Armor Proficiencies:</b><br> ";
+if ([1,4,10].includes(cl)) {
+	txtArmorProfs += armorProfList[0];
+	if (cl == 4) {
+		txtArmorProfs += " (non-metal)";
+	}
+}
+if ([2,11,12,14].includes(cl)) {
+	if (racetxt == "Mountain Dwarf") {
+		txtArmorProfs += "Light armor, Medium armor";
+	}
+	else {
+		txtArmorProfs += armorProfList[1];
+	}
+}
+if ([5,6,7,9].includes(cl)) {
+	txtArmorProfs += armorProfList[2];
+}
+if ([8,13,15].includes(cl)) {
+	if (racetxt == "Mountain Dwarf") {
+		txtArmorProfs += "Light armor, Medium armor";
+	}
+	else {
+		txtArmorProfs += armorProfList[3];
+	}
+}
+if (cl == 3) {
+	if ([1,3,4,6].includes(clDomain)) {
+		txtArmorProfs += armorProfList[2];
+	}
+	else {
+		txtArmorProfs += armorProfList[0];
+	}
+}
+txtArmorProfs += "<br>";
+
+// WEAPON PROFICIENCIES
+var wpnProfList = ["Simple weapons, Martial weapons","Simple weapons, Hand crossbows, Longswords, Rapiers, Shortswords","Simple weapons","Clubs, Daggers, Darts, Javelins, Maces, Quarterstaffs, Scimitars, Sickles, Slings, Spears","Simple weapons, Shortswords","Daggers, Darts, Slings, Quarterstaffs, Light crossbows"];
+var txtWpnProfs = "<b>Weapon Proficiencies:</b><br> ";
+if ([1,5,6,7,9,10].includes(cl)) { // barbarians, fighters, paladins, rangers
+	txtWpnProfs += wpnProfList[0];
+}
+if ([2,11,12].includes(cl)) { // bards and rogues
+	txtWpnProfs += wpnProfList[1];
+	if (racetxt == "Wood Elf" || racetxt == "High Elf") {
+		txtWpnProfs += ", Longbows, Shortbows";
+	}
+	if (racetxt.includes("Dwarf")) {
+		txtWpnProfs += ", Battleaxe, Warhammer";
+	}
+}
+if ([3,14].includes(cl)) { // cleric and warlock
+	txtWpnProfs += wpnProfList[2];
+	if (cl == 3 && [4,6,7].includes(clDomain)) {
+		txtWpnProfs += ", Martial weapons";
+	}
+	else {
+		if (racetxt == "Wood Elf" || racetxt == "High Elf") {
+			txtWpnProfs += ", Longswords, Shortswords, Longbows, Shortbows";
+		}
+		if (racetxt == "Drow Elf") {
+			txtWpnProfs += ", Rapiers, Shortswords, Hand crossbows";
+		}
+		if (racetxt.includes("Dwarf")) {
+			txtWpnProfs += ", Battleaxe, Warhammer";
+		}
+	}
+}
+if ([4].includes(cl)) { // druids
+	txtWpnProfs += wpnProfList[3];
+	if (racetxt == "Wood Elf" || racetxt == "High Elf") {
+		txtWpnProfs += ", Longswords, Shortswords, Longbows, Shortbows";
+	}
+	if (racetxt == "Drow Elf") {
+		txtWpnProfs += ", Rapiers, Shortswords, Hand crossbows";
+	}
+	if (racetxt.includes("Dwarf")) {
+		txtWpnProfs += ", Battleaxe, Handaxe, Warhammer, Light hammer";
+	}
+}
+if ([8].includes(cl)) { // monks
+	txtWpnProfs += wpnProfList[4];
+	if (racetxt == "Wood Elf" || racetxt == "High Elf") {
+		txtWpnProfs += ", Longswords, Longbows, Shortbows";
+	}
+	if (racetxt == "Drow Elf") {
+		txtWpnProfs += ", Rapiers, Hand crossbows";
+	}
+	if (racetxt.includes("Dwarf")) {
+		txtWpnProfs += ", Battleaxe, Warhammer";
+	}
+}
+if ([13,15].includes(cl)) { // sorcerers and wizards
+	txtWpnProfs += wpnProfList[5];
+	if (racetxt == "Wood Elf" || racetxt == "High Elf") {
+		txtWpnProfs += ", Longswords, Shortswords, Longbows, Shortbows";
+	}
+	if (racetxt == "Drow Elf") {
+		txtWpnProfs += ", Rapiers, Shortswords, Hand crossbows";
+	}
+	if (racetxt.includes("Dwarf")) {
+		txtWpnProfs += ", Battleaxe, Handaxe, Warhammer, Light hammer";
+	}
+}
+txtWpnProfs += "<br>";
+
+
+// TOOL PROFICIENCIES
+
+toOutput = toOutput.trim();
+if (toOutput.length < 3) {
+	toOutput = "None";
+}
+var txtToolProfs = "<b>Tool Proficiencies:</b><br> " + toOutput;
+txtToolProfs += "<br>";
+
+// LANGUAGE PROFICIENCIES
+var txtLangProfs = "<b>Languages:</b><br> ";
+txtLangProfs += languageOutput + "<br>";
+
+
+// MISC INFO
+var txtMiscInfo = "Initiative: " + showPlus(initiative) + "<br>";
+txtMiscInfo += "Speed: " + speed + "\'<br>";
+txtMiscInfo += "Size: " + size + "<br>";
+
+
 document.getElementById("status").innerHTML = output;
+
+document.getElementById("dspAbilScores").innerHTML = txtAbilScores;
+document.getElementById("dspProfBonus").innerHTML  = txtProfBonus;
+document.getElementById("dspSkillProfs").innerHTML = txtSkillProfs;
+document.getElementById("dspArmorProfs").innerHTML = txtArmorProfs;
+document.getElementById("dspWpnProfs").innerHTML = txtWpnProfs;
+document.getElementById("dspToolProfs").innerHTML = txtToolProfs;
+document.getElementById("dspLangProfs").innerHTML = txtLangProfs;
+document.getElementById("dspMiscInfo").innerHTML = txtMiscInfo;
+
+
 document.getElementById("ro").innerHTML = rollOutput;
 document.getElementById("sk").innerHTML = skOutput;
 document.getElementById("ab").innerHTML = abOutput;
@@ -10805,4 +11105,3 @@ document.getElementById("sp").innerHTML = spOutput;
 
 </body>
 </html>
-
