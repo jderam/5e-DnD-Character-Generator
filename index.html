@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Listo v1.03 - Quick Character Generator for 5th Edition D&D by Mike Risher</title>
+<title>Listo v1.10 - Quick Character Generator for 5th Edition D&D by Mike Risher with Jeremy Deram</title>
 <meta charset="UTF-8">
 <meta name="author" content="Mike Risher">
 <meta name="description" content="Listo is a 5th Edition D&D Character Generator for level 1-10 Characters created by Mike Risher.  Listo version 1.03 was released in July, 2015.">
@@ -47,18 +47,19 @@ float: right;
 }
 
 .header, .footer {
-    background-color: grey;
+    /* background-color: grey; */
     color: black;
-    padding: 15px;
+    padding: 10px;
     width: 100%;
     clear: left;
 }
 
 .column1, .column2, .column3 {
-	width: 220px;
-	padding: 15px;
+	width: 200px;
+	padding: 10px;
 	float: left;
 	word-wrap: normal;
+	font-size: 11px;
 }
 
 .armorhp {
@@ -468,7 +469,8 @@ float: right;
 		
 		
 	<div class="header"
-		<span id="status">Loading...</span><br>
+		<span id="status"></span><br>
+		<span id="dspHeader" style="font-size: 16px;">Loading...</span><br>
 	
 	</div>
 		
@@ -477,16 +479,16 @@ float: right;
 		</div>-->
 		
 		<div class="column1">
-			<span id="dspAbilScores" style="white-space: pre; font-size: 18px"></span><br>
-			<span id="dspProfBonus" style="white-space: pre; font-size: 12px"></span><br>
-			<span id="dspSkillProfs" style="white-space: pre; font-size: 11px"></span><br>
+			<div id="dspAbilScores" style="white-space: pre; font-size: 18px"></div><br>
+			<div id="dspProfBonus" style="white-space: pre; font-size: 12px"></div><br>
+			<div id="dspSkillProfs" style="white-space: pre; font-size: 11px"></div><br>
 			
-			<span id="dspArmorProfs" style="font-size: 11px"></span><br>
-			<span id="dspWpnProfs" style="font-size: 11px;"></span><br>
-			<span id="dspToolProfs" style="font-size: 11px"></span><br>
-			<span id="dspLangProfs" style="font-size: 11px"></span><br>
+			<div id="dspArmorProfs" style="font-size: 11px"></div><br>
+			<div id="dspWpnProfs" style="font-size: 11px;"></div><br>
+			<div id="dspToolProfs" style="font-size: 11px"></div><br>
+			<div id="dspLangProfs" style="font-size: 11px"></div><br>
 			<!--<b>Proficient skills:</b>-->
-			<span id="sk" style="display: none;"></span><br><br>
+			<!--<span id="sk" style="display: none;"></span><br><br>-->
 			
 			<span id="ab"></span><br>
 
@@ -495,20 +497,28 @@ float: right;
 		</div>
 	  
 	  <div class="column2">
-	  	<span id="ar" style="white-space: pre; font-size: 14px"></span><br>
-	  	<span id="dspMiscInfo" style="font-size: 11px"></span><br>
+	  	<!--<span id="ar" style="display: none;"></span><br>-->
+	  	<div id="dspHP" style="font-size: 14px"></div><br>
+	  	<div id="dspAC" style="font-size: 14px"></div><br>
+	  	<div id="dspMiscInfo" style="font-size: 14px"></div><br>
+	  	<div id="dspWpnAttacks" style="font-size: 11px"></div><br>
+	  	<div id="dspEquip" style="font-size: 11px;"></div><br>
+	  	<div id="dspWealth" style="font-size: 11px;"></div><br>
 	  	
-	  	
-	  	
+	  	<b>Equipment:</b><span id="eq"></span>
 	  	
 	  </div>
 	  
 	  <div class="column3">
-	  	<span id="bg" style="font-family: arial"></span><br><br>
-	  	
+	  	<div id="bg" style="font-family: arial"></div><br><br>
+	  	<div id="dspBgFeature" style="font-size: 11px"></div><br>
+	  	<div id="dspRaceTraits" style="font-size: 11px"></div><br>
+	  	<div id="dspClassFeatures" style="font-size: 11px"></div><br>
+<!-- 
 	  	<b>Melee weapons:</b><br>
 			<span id="wp"></span><br><br>
-			<b>Equipment:</b>  <span id="eq"></span>
+ -->
+			
 			
 	  </div>
 		
@@ -526,6 +536,7 @@ float: right;
 
 	<div class="footer">
 		<div class="spells" id="spellspot"><span id="sp"></span></div>
+		<div id="dspSpells"></div>
 	</div>
 		
 		
@@ -10523,6 +10534,7 @@ if ((familiar.length == 0) && ((mySpells.indexOf("Find Familiar") > -1) || (waTo
 
 
 // show weapons
+wpOutput += "<b>Melee Attacks:</b><br>";
 for (x=0;x < myWp.length;x++) {
 	//find which number in db
 	i = weapons.indexOf(myWp[x]);
@@ -10540,7 +10552,7 @@ for (x=0;x < myWp.length;x++) {
 			temp=1;
 			}
 
-		wpOutput += "<li>"
+		//wpOutput += "<li>"
 		tempTxt ="";
 		y=0;
 		// show the plus if it's magic
@@ -10566,12 +10578,13 @@ for (x=0;x < myWp.length;x++) {
 		z=0;
 		if ((fiStyle==2) && (i != 12) && (i != 13) && (i != 20) && (wpNum[i] < 1))
 			z=2;
-		wpOutput += " (" + showPlus( mod[temp]+prof+y ) +  " to hit) " +wpDam[i]+ showPlus( mod[temp]+z+y ) + " " + wpType[i] + " damage<br>";	
+		//wpOutput += " (" + showPlus( mod[temp]+prof+y ) +  " to hit) " +wpDam[i]+ showPlus( mod[temp]+z+y ) + " " + wpType[i] + " damage<br>";
+		wpOutput += " " + showPlus( mod[temp]+prof+y ) +  "(" +wpDam[i]+ showPlus( mod[temp]+z+y ) + ") " + wpType[i] + "<br>";	
 	}	
 	
 	// ranged weapons
 	if (wpRange[i] > 1) {
-		wrOutput += "<LI>";
+		//wrOutput += "<LI>";
 		var q=0;
 		// show the plus if it's magic
 		if (x==whichMagic) {
@@ -10605,14 +10618,14 @@ for (x=0;x < myWp.length;x++) {
 		else 
 			var tempTxt = wpDam[i].slice(0,3);
 
-		wrOutput += " (" + showPlus( y+z+prof+q ) +  " to hit) " +tempTxt+ showPlus( y+q ) + " " + wpType[i] + " damage &nbsp; Range: "+wpDistance[i];
+		wrOutput += " " + showPlus( y+z+prof+q ) +  "(" +tempTxt+ showPlus( y+q ) + ") " + wpType[i] + "<br>Range: "+wpDistance[i];
 
 
 		if ((i == 5) || (i == 6) || (i == 7)) {
 			if ((fiStyle==0) || (cl==10)) 
-				wrOutput += " &nbsp; 40 bolts";
+				wrOutput += ", 40 bolts<br>";
 			else 
-				wrOutput += " &nbsp; 20 bolts";
+				wrOutput += ", 20 bolts<br>";
 			if (((magicArrowPlus > 0) && (magicArrowType.indexOf("olt") > -1)) && (magicArrowDisplay==false)) {
 				wrOutput += "</li><li>+" + magicArrowPlus + " " + magicArrowType +" (" + magicArrows + ") (" + showPlus( y+z+prof+q+magicArrowPlus ) +  " to hit) "+tempTxt+ showPlus( y+q+magicArrowPlus ) + " " + wpType[i] + " damage";
 				magicArrowDisplay=true;
@@ -10621,32 +10634,35 @@ for (x=0;x < myWp.length;x++) {
 
 		}
 
-		if ((i == 8) || (i == 9)) {
+		else if ((i == 8) || (i == 9)) {
 			if ((fiStyle==0) || (cl==10)) 
-				wrOutput += " &nbsp; 40 arrows";
+				wrOutput += ", 40 arrows<br>";
 			else 
-				wrOutput += " &nbsp; 20 arrows";
+				wrOutput += ", 20 arrows<br>";
 			
 			if ((magicArrowPlus > 0) && (magicArrowType.indexOf("rrow") > -1) && (magicArrowDisplay==false)) {
 				wrOutput += "</li><li>+" + magicArrowPlus + " " + magicArrowType +" (" + magicArrows + ") (" + showPlus( y+z+prof+q+magicArrowPlus ) +  " to hit) "+tempTxt+ showPlus( y+q+magicArrowPlus ) + " " + wpType[i] + " damage";
 				magicArrowDisplay=true;
 			}
 		}
-		if (i == 24) {
-			wrOutput += " &nbsp; 20 bullets";
+		else if (i == 24) {
+			wrOutput += ", 20 bullets<br>";
 			if ((magicArrowPlus > 0) && (magicArrowType.indexOf("ullet") > -1) && (magicArrowDisplay==false)) {
 				wrOutput += "</li><li>+" + magicArrowPlus + " " + magicArrowType +" (" + magicArrows + ") (" + showPlus( y+z+prof+q+magicArrowPlus ) +  " to hit) "+tempTxt+ showPlus( y+q+magicArrowPlus ) + " " + wpType[i] + " damage";
 				magicArrowDisplay=true;
 			}
 
 		}
+		else {
+			wrOutput += "<br>";
+		}
 
 		
 	}
 }
 if (wrOutput.length >0)
-	wpOutput += "<b>Ranged weapons:</b>  <br>" + wrOutput;
-
+	wpOutput += "<b>Ranged Attacks:</b><br>" + wrOutput;
+wpOutput += "<br>";
 
 
 
@@ -10753,21 +10769,29 @@ if (myAr[0] == "Shield" && (myAr.length > 1)) {
 }
 
 arOutput+= "<b>Hit points: " + hp + "</b><br>Hit dice:  " + level + "d" + hd +"<br><br><b>AC:  " + ac + "</b><br>Armor:  ";
+var txtAC = "<b>AC: " + ac + "</b><br>Armor: ";
 
 if (myAr.length == 0) {
 		arOutput += "None";
-	}
+		txtAC += "None";
+}
 
 if (myAr.length > 1) {
-	if (whichMagicArmor == 0)
+	if (whichMagicArmor == 0) {
 		arOutput += "+" + magicArmor+" ";
+		txtAC += "+" + magicArmor+" ";
+	}
 
-	arOutput += myAr[0] + " and " 
+	arOutput += myAr[0] + " and ";
+	txtAC += myAr[0] + " and ";
 	
-	if (whichMagicArmor == 1)
-		arOutput += "+" + magicArmor +" ";
+	if (whichMagicArmor == 1) {
+		arOutput += "+" + magicArmor + " ";
+		txtAC += "+" + magicArmor + " ";
+	}
 
 	arOutput += myAr[1];
+	txtAC += myAr[1];
 }
 
 
@@ -10775,11 +10799,15 @@ if (myAr.length > 1) {
 
 
 if (myAr.length == 1) {
-	if (magicArmor > 0) 
+	if (magicArmor > 0) {
 		arOutput += "+" + magicArmor + " ";
+		txtAC += "+" + magicArmor + " ";
+	}
 	arOutput += myAr;
+	txtAC += myAr;
 }
 arOutput += "<br>";
+txtAC += "<br>";
 //arOutput += "<br>AC:  " + ac + "</b><br>";
 
 
@@ -10890,8 +10918,13 @@ var abilityScoreText = data1[1];
 var saveText = data1[2];
 var miscText = data1[3];
 
-output = nameText + "<br>" + miscText;
+output = nameText + "<br>";
 
+//output += "<span style=\"font-size:large; font-weight: bold;\">" + name +  " &mdash; Level " + level + " " + racetxt + " " + classtxt + "</span><br>";
+
+var txtHeader = "<span style=\"font-size:large; font-weight: bold;\">Name: ________________________________________</span><br><br>";
+txtHeader += "Race: " + racetxt + "<br>";
+txtHeader += "Class: " + classtxt + " " + level + "<br>";
 
 // ABILITY SCORES
 
@@ -11063,21 +11096,53 @@ toOutput = toOutput.trim();
 if (toOutput.length < 3) {
 	toOutput = "None";
 }
-var txtToolProfs = "<b>Tool Proficiencies:</b><br> " + toOutput;
-txtToolProfs += "<br>";
+var txtToolProfs = "<b>Tool Proficiencies:</b><br> " + toOutput + "<br>";
+
 
 // LANGUAGE PROFICIENCIES
 var txtLangProfs = "<b>Languages:</b><br> ";
 txtLangProfs += languageOutput + "<br>";
 
+// HP INFO
+var txtHP = "<b>Hit Points: " + hp + "</b><br>Hit Dice: " + level + "d" + hd + "<br>";
+
+// AC INFO
+// see the section above where arOutput is set
 
 // MISC INFO
 var txtMiscInfo = "Initiative: " + showPlus(initiative) + "<br>";
 txtMiscInfo += "Speed: " + speed + "\'<br>";
 txtMiscInfo += "Size: " + size + "<br>";
 
+// ATTACKS
+var txtWpnAttacks = wpOutput;
 
-document.getElementById("status").innerHTML = output;
+// EQUIPMENT
+var txtEquip = "<b>Equipment:</b><br>";
+
+// WEALTH
+var txtWealth = "<b>Wealth:</b> 10 gp<br>";
+
+// BACKGROUND
+
+// BACKGROUND FEATURE
+var txtBgFeature = "<b>Background Feature:</b> ";
+txtBgFeature += "<br>";
+
+// RACIAL TRAITS
+var txtRaceTraits = "<b>Racial Traits:</b> ";
+txtRaceTraits += "<br>";
+
+// CLASS FEATURES
+var txtClassFeatures = "<b>Class Features:</b> ";
+txtClassFeatures += "<br>";
+
+// SPELLS
+var txtSpells = spOutput;
+
+
+//document.getElementById("status").innerHTML = output;
+document.getElementById("dspHeader").innerHTML = txtHeader;
 
 document.getElementById("dspAbilScores").innerHTML = txtAbilScores;
 document.getElementById("dspProfBonus").innerHTML  = txtProfBonus;
@@ -11086,18 +11151,26 @@ document.getElementById("dspArmorProfs").innerHTML = txtArmorProfs;
 document.getElementById("dspWpnProfs").innerHTML = txtWpnProfs;
 document.getElementById("dspToolProfs").innerHTML = txtToolProfs;
 document.getElementById("dspLangProfs").innerHTML = txtLangProfs;
+document.getElementById("dspHP").innerHTML = txtHP;
+document.getElementById("dspAC").innerHTML = txtAC;
 document.getElementById("dspMiscInfo").innerHTML = txtMiscInfo;
-
+document.getElementById("dspWpnAttacks").innerHTML = txtWpnAttacks;
+document.getElementById("dspEquip").innerHTML = txtEquip;
+document.getElementById("dspWealth").innerHTML = txtWealth;
+document.getElementById("dspBgFeature").innerHTML = txtBgFeature;
+document.getElementById("dspRaceTraits").innerHTML = txtRaceTraits;
+document.getElementById("dspClassFeatures").innerHTML = txtClassFeatures;
+document.getElementById("dspSpells").innerHTML = txtSpells;
 
 document.getElementById("ro").innerHTML = rollOutput;
-document.getElementById("sk").innerHTML = skOutput;
-document.getElementById("ab").innerHTML = abOutput;
-document.getElementById("wp").innerHTML = wpOutput;
-document.getElementById("ar").innerHTML = arOutput;
+//document.getElementById("sk").innerHTML = skOutput;
+//document.getElementById("ab").innerHTML = abOutput;
+//document.getElementById("wp").innerHTML = wpOutput;
+//document.getElementById("ar").innerHTML = arOutput;
 document.getElementById("bg").innerHTML = bgOutput;
 document.getElementById("eq").innerHTML = eqOutput;
 document.getElementById("la").innerHTML = languageOutput;
-document.getElementById("sp").innerHTML = spOutput;
+//document.getElementById("sp").innerHTML = spOutput;
 
 }
 
