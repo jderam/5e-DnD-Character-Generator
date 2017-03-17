@@ -504,9 +504,11 @@ float: right;
 	  	<div id="dspMiscInfo" style="font-size: 14px;"></div><br>
 	  	<div id="dspWpnAttacks" style="font-size: 11px;"></div><br>
 	  	<div id="dspEquip" style="font-size: 11px;"></div><br>
+	  	<div id="dspMagicItems" style="font-size: 11px;"></div>
 	  	<div id="dspWealth" style="font-size: 11px;"></div><br>
+	  	<div id="dspTest" style="font-size: 11px;"></div><br>
 	  	
-	  	<b>Equipment:</b><span id="eq"></span>
+	  	<!--<b>Equipment:</b><span id="eq"></span>-->
 	  	
 	  </div>
 	  
@@ -564,6 +566,14 @@ function repeatChar(theChar, howMany) {
 	return result;
 }
 
+// roll dice function
+function rollDice(dQty, dType) {
+	rollResult = 0;
+	for (i = 0; i < dQty; i++) {
+		rollResult += Math.floor(Math.random() * dType) + 1;
+	}
+	return rollResult;
+}
 
 var firstAbil=true;
 
@@ -1177,6 +1187,15 @@ var abilIncrease = [0,0,0,0,0,0];
 var mySkills = [];
 var expertise = [];
 
+var txtBurglarsPack = "<u>Burglar's Pack</u><br>backpack<br>bag of 1,000 ball bearings<br>10' string<br>bell<br>5 candles<br>crowbar<br>hammer<br>10 pitons<br>hooded lantern<br>2 flasks of oil<br>5 days rations<br>tinderbox<br>waterskin<br>50' hempen rope<br>"
+var txtDiplomatsPack = "<u>Diplomat's Pack</u><br>chest<br>2 scroll cases<br>set of fine clothes<br>bottle of ink<br>ink pen<br>lamp<br>2 flasks of oil<br>5 sheets of paper<br>vial of perfume<br>sealing wax<br>soap<br>"
+var txtDungeoneersPack = "<u>Dungeoneer's Pack</u><br>backpack<br>crowbar<br>hammer<br>10 pitons<br>10 torches<br>tinderbox<br>10 days of rations<br>waterskin<br>50' hempen rope<br>"
+var txtEntertainersPack = "<u>Entertainer's Pack</u><br>backpack<br>bedroll<br>2 costumes<br>5 candles<br>5 days of rations<br>waterskin<br>disguise kit<br>"
+var txtExplorersPack = "<u>Explorer's Pack</u><br>backpack<br>bedroll<br>mess kit<br>tinderbox<br>10 torches<br>10 days of rations<br>waterskin<br>50' hempen rope<br>"
+var txtPriestsPack = "<u>Priest's Pack</u><br>backpack<br>blanket<br>10 candles<br>tinderbox<br>alms box<br>2 blocks of incense<br>censer<br>vestments<br>2 days of rations<br>waterskin<br>"
+var txtScholarsPack = "<u>Scholar's Pack</u><br>backpack<br>book of lore<br>bottle of ink<br>ink pen<br>10 sheets of parchment<br>little bag of sand<br>small knife<br>"
+
+
 var armors = ["Shield","Padded","Leather","Studded Leather","Hide","Chain shirt","Scale mail","Breastplate","Half plate","Ring mail","Chain mail","Splint mail","Plate mail"];
 var armorAC = [2,11,11,12,12,13,14,14,15,14,16,17,18];
 var weapons = ["Dagger","Mace","Spear","Handaxe","Javelin","Light crossbow","Heavy crossbow","Hand crossbow","Short bow","Long bow","Throwing hammer","Battleaxe","Greatsword","Halberd","Longsword","Morning Star","Rapier","Scimitar","Shortsword","Warhammer","Great Axe","Dart","Quarterstaff", "Unarmed Strike","Sling"];
@@ -1226,9 +1245,9 @@ var magicUncommon = ["Bag of Holding","Boots of Striding and Springing","Cloak o
 var magicRare = ["Ring of Evasion (3 charges)","Ring of Protection","Ring of Resistance"];
 //"Amulet of Health",
 var magicVeryRare = ["Potion of Flying","Potion of Invisibility","Potion of Vitality"];
-poisonUncommon = ["Assassin's blood (Ingested)","Carrion crawler mucus  (Contact)","Drow poison  (Injury)","Essence of ether  (Inhaled)","Malice  (Inhaled)","Pale tincture  (Ingested)","Serpent venom  (Injury)","Truth serum  (Ingested)"];
-Rare = ["Torpor  (Ingested)","Burnt othur fumes  (Inhaled)","Oil of taggit  (Contact)"];
-VeryRare =["Wyvern  poison (Injury)","Purple worm poison (Injury)","Midnight tears  (Ingested)"]
+var poisonUncommon = ["Assassin's blood (Ingested)","Carrion crawler mucus  (Contact)","Drow poison  (Injury)","Essence of ether  (Inhaled)","Malice  (Inhaled)","Pale tincture  (Ingested)","Serpent venom  (Injury)","Truth serum  (Ingested)"];
+var poisonRare = ["Torpor  (Ingested)","Burnt othur fumes  (Inhaled)","Oil of taggit  (Contact)"];
+var poisonVeryRare =["Wyvern  poison (Injury)","Purple worm poison (Injury)","Midnight tears  (Ingested)"]
 
 //var magicUncommon = ["","","","","","","","","","","","","","","","","","","","","","",]
 
@@ -9874,26 +9893,26 @@ switch (cl) {
 
 
 
-
+// commenting out. you're only supposed to roll for gold of you don't use the equipment packs. JMD
 // 1st level gold
-x = 5;
-if ((cl==1) || (cl==4))
-	x=2;
-//11, 12, 14, 15
-if (cl > 10)
-	x=4;
-if (cl==13)
-	x=3;
-// +1d4 for each x
-var sum=0;
-for (i=1;i <= x; i++)
-	sum += Math.floor((Math.random() * 4) +1); 
-
-// x10 if youre not a monk
-if (cl != 8)
-	sum = sum * 10;
-
-gold += sum;
+//x = 5;
+//if ((cl==1) || (cl==4))
+//	x=2;
+////11, 12, 14, 15
+//if (cl > 10)
+//	x=4;
+//if (cl==13)
+//	x=3;
+//// +1d4 for each x
+//var sum=0;
+//for (i=1;i <= x; i++)
+//	sum += Math.floor((Math.random() * 4) +1); 
+//
+//// x10 if youre not a monk
+//if (cl != 8)
+//	sum = sum * 10;
+//
+//gold += sum;
 
 if (al==true) {
 	gold=(x*40);
@@ -9906,35 +9925,43 @@ if (al==true) {
 var golddebug = [];
 golddebug.unshift(gold);
 
-// above 1st level adjustments to gold
-x = level -1;
-while (x>0) {
-	i = Math.random();
-	
-// tiny  of a chance of losing gold
-	if (i < 0.2) {
-		// gold * .7 to .9
-		gold = gold * ((Math.floor(Math.random() * 3) +7) * 0.1);
-	}
-	else {
-		// gold * 1.2 to 1.7
-		gold = gold * ((Math.floor(Math.random() * 6) +12) * 0.1);
-	}
-gold = Math.floor(gold);
-
-golddebug.push(gold);
-x--;
+// adding wealth rules for higher level characters from DMG page 38 JMD
+// for levels 5-10 characters get 500 gp + 1d10 x 25 gp
+if (level > 4) {
+	gold = 500 + (rollDice(1,10) * 25);
 }
+
+// I don't know what this is JMD
+//// above 1st level adjustments to gold
+//x = level -1;
+//while (x>0) {
+//	i = Math.random();
+//	
+//// tiny  of a chance of losing gold
+//	if (i < 0.2) {
+//		// gold * .7 to .9
+//		gold = gold * ((Math.floor(Math.random() * 3) +7) * 0.1);
+//	}
+//	else {
+//		// gold * 1.2 to 1.7
+//		gold = gold * ((Math.floor(Math.random() * 6) +12) * 0.1);
+//	}
+//gold = Math.floor(gold);
+//
+//golddebug.push(gold);
+//x--;
+//}
 
 // convert some gp to pp for ease of carrying
-if ((upgrade() == true) && (gold > 250)) {
-	x = (Math.floor(Math.random() * 3) +7) * .1
-	platinum = Math.floor((gold * x) / 10);
-	gold = Math.floor(gold * (1-x)); 
-}
+//if ((upgrade() == true) && (gold > 250)) {
+//	x = (Math.floor(Math.random() * 3) +7) * .1
+//	platinum = Math.floor((gold * x) / 10);
+//	gold = Math.floor(gold * (1-x)); 
+//}
 
 // show total gold we own
-weOutput += " &nbsp; <b>Wealth:</b> " + gold + " gp";
+//weOutput += " &nbsp; <b>Wealth:</b> " + gold + " gp";
+weOutput += gold + " gp";
 if (platinum > 0) {
 	weOutput += ", " + platinum + " pp";
 }
@@ -10527,30 +10554,30 @@ if (level > 1) {
 }
 
 //add wealth to end of equipemnt list
-eqOutput += weOutput;
+//eqOutput += weOutput;
 
 
-if (maOutput.length > 0) {
-	eqOutput += "<br><b>Magic Item";	
-	if ((maOutput.indexOf(",") != maOutput.lastIndexOf(",")) || (maOutput.indexOf("otions") > -1)) {
-		eqOutput += "s";
-	}
-	//trim off initial comma
-	maOutput = maOutput.slice(1,maOutput.length);
-	eqOutput += ": </b>" + maOutput;	
-	console.log(maOutput);
-}
+//if (maOutput.length > 0) {
+//	eqOutput += "<br><b>Magic Item";	
+//	if ((maOutput.indexOf(",") != maOutput.lastIndexOf(",")) || (maOutput.indexOf("otions") > -1)) {
+//		eqOutput += "s";
+//	}
+//	//trim off initial comma
+//	maOutput = maOutput.slice(1,maOutput.length);
+//	eqOutput += ": </b>" + maOutput;	
+//	console.log(maOutput);
+//}
 		
 
+var txtCompanion = "";
 if (companion > -1) {
 	if ((level * 4) > companionshp[companion]) {
 		companionshp[companion] = level *4;
 	}
-	eqOutput += "<br><b>Ranger's Companion:</b>  " + companions[companion] + " &mdash; " + (companionshp[companion] * 1) + " hit points, "+((companionsAC[companion] * 1)+ (prof*1)) + " AC, " + (companionsStats[companion]) + ((companionsAttack1[companion] * 1)+prof) + " to hit (" +(companionsDamage1[companion]) +"+"+(companionsDamageBonus[companion]+prof) + " dmg" +	companionsDamageExtra[companion] + ")";
+	txtCompanion += "<br><b>Ranger's Companion:</b>  " + companions[companion] + " &mdash; " + (companionshp[companion] * 1) + " hit points, "+((companionsAC[companion] * 1)+ (prof*1)) + " AC, " + (companionsStats[companion]) + ((companionsAttack1[companion] * 1)+prof) + " to hit (" +(companionsDamage1[companion]) +"+"+(companionsDamageBonus[companion]+prof) + " dmg" +	companionsDamageExtra[companion] + ")";
 	if (companionsAttackText2[companion].length > 0) {
-		eqOutput += ", " + companionsAttackText2[companion] + " +" + ((companionsAttack2[companion] * 1)+prof) + " to hit (" +(companionsAttackDamage2[companion]) +"+"+(companionsDamageBonus2[companion]+prof) + " dmg)";
+		txtCompanion += ", " + companionsAttackText2[companion] + " +" + ((companionsAttack2[companion] * 1)+prof) + " to hit (" +(companionsAttackDamage2[companion]) +"+"+(companionsDamageBonus2[companion]+prof) + " dmg)";
 	}
-
 }
 
 
@@ -11154,9 +11181,71 @@ var txtWpnAttacks = wpOutput;
 
 // EQUIPMENT
 var txtEquip = "<b>Equipment:</b><br>";
+do {
+	eqOutput = eqOutput.replace(", ","<br>");
+}
+while (eqOutput.includes(", "))
+eqOutput += "<br>";
+
+// insert trinket here
+eqOutput += "Random Trinket<br>";
+
+// add full text of equipment packs
+if (eqOutput.includes("Burglar's pack")) {
+	eqOutput = eqOutput.replace("Burglar's pack<br>","");
+	eqOutput += txtBurglarsPack;
+}
+else if (eqOutput.includes("Diplomat's pack")) {
+	eqOutput = eqOutput.replace("Diplomat's pack","");
+	eqOutput += txtDiplomatsPack;
+}
+else if (eqOutput.includes("Dungeoneer's pack")) {
+	eqOutput = eqOutput.replace("Dungeoneer's pack","");
+	eqOutput += txtDungeoneersPack;
+}
+else if (eqOutput.includes("Entertainer's pack")) {
+	eqOutput = eqOutput.replace("Entertainer's pack","");
+	eqOutput += txtEntertainersPack;
+}
+else if (eqOutput.includes("Explorer's pack")) {
+	eqOutput = eqOutput.replace("Explorer's pack","");
+	eqOutput += txtExplorersPack;
+}
+else if (eqOutput.includes("Priest's pack")) {
+	eqOutput = eqOutput.replace("Priest's pack","");
+	eqOutput += txtPriestsPack;
+}
+else if (eqOutput.includes("Scholar's pack")) {
+	eqOutput = eqOutput.replace("Scholar's pack","");
+	eqOutput += txtScholarsPack;
+}
+else {
+	eqOutput += txtExplorersPack;
+}
+// remove any double breaks
+do {
+	eqOutput = eqOutput.replace("<br><br>","<br>");
+}
+while (eqOutput.includes("<br><br>"))
+
+txtEquip += eqOutput;
+
+// MAGIC ITEMS
+var txtMagicItems = "";
+if (maOutput.length > 0) {
+	txtMagicItems = "<b>Magic Items:</b><br>";
+	if (maOutput.indexOf(", ") == 0) {
+		maOutput = maOutput.substring(2);
+	}
+	do {
+		maOutput = maOutput.replace(", ","<br>");
+	}
+	while (maOutput.includes(", "))
+	txtMagicItems += maOutput + "<br><br>";
+}
 
 // WEALTH
-var txtWealth = "<b>Wealth:</b> 10 gp<br>";
+var txtWealth = "<b>Wealth:</b> " + gold + "gp<br>";
 
 // BACKGROUND
 
@@ -11175,6 +11264,14 @@ txtClassFeatures += "<br>";
 var txtSpells = spOutput;
 
 
+// TEST SECTION
+var txtTest = "TEST SECTION:<br>";
+//txtTest += "eqOutput:<br>" + eqOutput + "<br>";
+txtTest += "weOutput:<br>" + weOutput + "<br>";
+txtTest += "poOutput:<br>" + poOutput + "<br>";
+txtTest += "maOutput:<br>" + maOutput + "<br>";
+
+
 //document.getElementById("status").innerHTML = output;
 document.getElementById("dspHeader").innerHTML = txtHeader;
 
@@ -11190,7 +11287,15 @@ document.getElementById("dspAC").innerHTML = txtAC;
 document.getElementById("dspMiscInfo").innerHTML = txtMiscInfo;
 document.getElementById("dspWpnAttacks").innerHTML = txtWpnAttacks;
 document.getElementById("dspEquip").innerHTML = txtEquip;
+
+if (txtMagicItems.length > 0) {
+	document.getElementById("dspMagicItems").innerHTML = txtMagicItems;
+}
+
 document.getElementById("dspWealth").innerHTML = txtWealth;
+
+document.getElementById("dspTest").innerHTML = txtTest;
+
 document.getElementById("dspBgFeature").innerHTML = txtBgFeature;
 document.getElementById("dspRaceTraits").innerHTML = txtRaceTraits;
 document.getElementById("dspClassFeatures").innerHTML = txtClassFeatures;
@@ -11202,7 +11307,7 @@ document.getElementById("ro").innerHTML = rollOutput;
 //document.getElementById("wp").innerHTML = wpOutput;
 //document.getElementById("ar").innerHTML = arOutput;
 document.getElementById("bg").innerHTML = bgOutput;
-document.getElementById("eq").innerHTML = eqOutput;
+//document.getElementById("eq").innerHTML = eqOutput;
 //document.getElementById("la").innerHTML = languageOutput;
 //document.getElementById("sp").innerHTML = spOutput;
 
