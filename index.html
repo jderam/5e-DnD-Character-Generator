@@ -12,7 +12,7 @@
 /*
 http://i.imgur.com/DnuoN8l.gif
 */
-
+margin: auto;
 font: 10pt consolas;
 width: 100%;
 }
@@ -89,9 +89,9 @@ float: right;
 }
 
 
-/*.bg {
+.bg {
 	font-weight: bold;
-}*/
+}
 
 .main-area {
 
@@ -1181,7 +1181,7 @@ var skAbil = [1,4,3,0,5,3,4,5,3,4,3,4,5,5,3,1,1,4];
 var skOutput = "";
 var abOutput = "";
 var txtRaceTraits = "<b>Racial Traits:</b> ";
-var txtBgFeature = "<b>Background Feature:</b> ";
+var txtBgFeature = "";
 var abilIncrease = [0,0,0,0,0,0];
 
 var mySkills = [];
@@ -1194,6 +1194,137 @@ var txtEntertainersPack = "<u>Entertainer's Pack</u><br>backpack<br>bedroll<br>2
 var txtExplorersPack = "<u>Explorer's Pack</u><br>backpack<br>bedroll<br>mess kit<br>tinderbox<br>10 torches<br>10 days of rations<br>waterskin<br>50' hempen rope<br>"
 var txtPriestsPack = "<u>Priest's Pack</u><br>backpack<br>blanket<br>10 candles<br>tinderbox<br>alms box<br>2 blocks of incense<br>censer<br>vestments<br>2 days of rations<br>waterskin<br>"
 var txtScholarsPack = "<u>Scholar's Pack</u><br>backpack<br>book of lore<br>bottle of ink<br>ink pen<br>10 sheets of parchment<br>little bag of sand<br>small knife<br>"
+
+var bgFeatures = [
+"Shelter of the Faithful",
+"False Identity",
+"Criminal Contact",
+"By Popular Demand",
+"Guild Membership",
+"Discovery",
+"Rustic Hospitality",
+"Position of Privilege",
+"Wanderer",
+"Researcher",
+"Ship's Passage",
+"Military Rank",
+"City Secrets"];
+
+var charBackground = {
+	title : "",
+	subTitle : "",
+	specialty : "",
+	perTrait1 : "",
+	perTrait2 : "",
+	ideal : "",
+	bond : "",
+	flaw : "",
+	feature : "",
+	equip : "",
+};
+
+var trinkets = [
+"A mummified goblin hand"
+,"A piece of crystal that faintly glows in the moonlight"
+,"A gold coin minted in an unknown land"
+,"A diary written in a language you don't know"
+,"A brass ring that never tarnishes"
+,"An old chess piece made from glass"
+,"A pair of knucklebone dice, each with a skull symbol on the side that would normally show six pips"
+,"A small idol depicting a nightmarish creature that gives you unsettling dreams when you sleep near it"
+,"A rope necklace from which dangles four mummified elf fingers"
+,"The deed for a parcel of land in a realm unknown to you"
+,"A 1-ounce block made from an unknown material"
+,"A small cloth doll skewered with needles"
+,"A tooth from an unknown beast"
+,"An enormous scale, perhaps from a dragon"
+,"A bright green feather"
+,"An old divination card bearing your likeness"
+,"A glass orb filled with moving smoke"
+,"A 1-pound egg with a bright red shell"
+,"A pipe that blows bubbles"
+,"A glass jar containing a weird bit of flesh floating in pickling fluid"
+,"A tiny gnome-crafted music box that plays a song you dimly remember from your childhood"
+,"A small wooden statuette of a smug halfling"
+,"A brass orb etched with strange runes"
+,"A multicolored stone disk"
+,"A tiny silver icon of a raven"
+,"A bag containing forty-seven humanoid teeth, one of which is rotten"
+,"A shard of obsidian that always feels warm to the touch"
+,"A dragon's bony talon hanging from a plain leather necklace"
+,"A pair of old socks"
+,"A blank book whose pages refuse to hold ink, chalk, graphite, or any other substance or marking"
+,"A silver badge in the shape of a five-pointed star"
+,"A knife that belonged to a relative"
+,"A glass vial filled with nail clippings"
+,"A rectangular metal device with two tiny metal cups on one end that throws sparks when wet"
+,"A white, sequined glove sized for a human"
+,"A vest with one hundred tiny pockets"
+,"A small, weightless stone block"
+,"A tiny sketch portrait of a goblin"
+,"An empty glass vial that smells of perfume when opened"
+,"A gemstone that looks like a lump of coal when examined by anyone but you"
+,"A scrap of cloth from an old banner"
+,"A rank insignia from a lost legionnaire"
+,"A tiny silver bell without a clapper"
+,"A mechanical canary inside a gnomish lamp"
+,"A tiny chest carved to look like it has numerous feet on the bottom"
+,"A dead sprite inside a clear glass bottle"
+,"A metal can that has no opening but sounds as if it is filled with liquid, sand, spiders, or broken glass (your choice)"
+,"A glass orb filled with water, in which swims a clockwork goldfish"
+,"A silver spoon with an M engraved on the handle"
+,"A whistle made from gold-colored wood"
+,"A dead scarab beetle the size of your hand"
+,"Two toy soldiers, one with a missing head"
+,"A small box filled with different-sized buttons"
+,"A candle that can't be lit"
+,"A tiny cage with no door"
+,"An old key"
+,"An indecipherable treasure map"
+,"A hilt from a broken sword"
+,"A rabbit's foot"
+,"A glass eye"
+,"A cameo carved in the likeness of a hideous person"
+,"A silver skull the size of a coin"
+,"An alabaster mask"
+,"A pyramid of sticky black incense that smells very bad"
+,"A nightcap that, when worn, gives you pleasant dreams"
+,"A single caltrop made from bone"
+,"A gold monocle frame without the lens"
+,"A 1-inch cube, each side painted a different color"
+,"A crystal knob from a door"
+,"A small packet filled with pink dust"
+,"A fragment of a beautiful song, written as musical notes on two pieces of parchment"
+,"A silver teardrop earring made from a real teardrop"
+,"The shell of an egg painted with scenes of human misery in disturbing detail"
+,"A fan that, when unfolded, shows a sleeping cat"
+,"A set of bone pipes"
+,"A four-leaf clover pressed inside a book discussing manners and etiquette"
+,"A sheet of parchment upon which is drawn a complex mechanical contraption"
+,"An ornate scabbard that fits no blade you have found so far"
+,"An invitation to a party where a murder happened"
+,"A bronze pentacle with an etching of a rat's head in its center"
+,"A purple handkerchief embroidered with the name of a powerful archmage"
+,"Half of a floorplan for a temple, castle, or some other structure"
+,"A bit of folded cloth that, when unfolded, turns into a stylish cap"
+,"A receipt of deposit at a bank in a far-flung city"
+,"A diary with seven missing pages"
+,"An empty silver snuffbox bearing an inscription on the surface that says 'dreams'"
+,"An iron holy symbol devoted to an unknown god"
+,"A book that tells the story of a legendary hero's rise and fall, with the last chapter missing"
+,"A vial of dragon blood"
+,"An ancient arrow of elven design"
+,"A needle that never bends"
+,"An ornate brooch of dwarven design"
+,"An empty wine bottle bearing a pretty label that says, 'The Wizard of Wines Winery, Red Dragon Crush, 331422-W'"
+,"A mosaic tile with a multicolored, glazed surface"
+,"A petrified mouse"
+,"A black pirate flag adorned with a dragon's skull and crossbones"
+,"A tiny mechanical crab or spider that moves about when it's not being observed"
+,"A glass jar containing lard with a label that reads, 'Griffon Grease'"
+,"A wooden box with a ceramic bottom that holds a living worm with a head on each end of its body"
+,"A metal urn containing the ashes of a hero"
+];
 
 
 var armors = ["Shield","Padded","Leather","Studded Leather","Hide","Chain shirt","Scale mail","Breastplate","Half plate","Ring mail","Chain mail","Splint mail","Plate mail"];
@@ -2324,7 +2455,8 @@ else	{
 if (racetxt != "Human")
 	abOutput += "<br>"
 
-abOutput += "<b>Class Features:</b> ";
+//abOutput += "<b>Class Features:</b> ";
+var tmpClassFeatures = "";
 
 console.log("Racial bonuses:");
 for (i=0;i<6;i++)
@@ -2367,10 +2499,10 @@ switch (cl) {
 		if (level > 15)
 			y=4;
 		
-		abOutput += "Rage (" + x + " Rages, "+ showPlus( y ) + " damage), Unarmored Defense";
+		tmpClassFeatures += "Rage (" + x + " Rages, "+ showPlus( y ) + " damage), Unarmored Defense";
 
 		if (level >1)
-			abOutput += ", Reckless Attack, Danger Sense";			
+			tmpClassFeatures += ", Reckless Attack, Danger Sense";			
 		if (level >2) {
 			x=Math.random();
 			if (forceBarb==0) {
@@ -2378,50 +2510,50 @@ switch (cl) {
 			} else if (forceBarb>0) {
 				x=1;
 			}
-			abOutput += ", Primal Path";			
+			tmpClassFeatures += ", Primal Path";			
 			if (x < 0.5) {
 				classtxt += " (Path of the Berserker)";
-				abOutput += " (Path of the Berserker)";
+				tmpClassFeatures += " (Path of the Berserker)";
 
-				abOutput += ", Frenzy";
+				tmpClassFeatures += ", Frenzy";
 			} else {
 				classtxt += " (Path of the Totem Warrior &mdash; ";
-				abOutput += " (Path of the Totem Warrior)";
-				abOutput += ", Spirit Seeker, Totem Spirit";
+				tmpClassFeatures += " (Path of the Totem Warrior)";
+				tmpClassFeatures += ", Spirit Seeker, Totem Spirit";
 				x=Math.floor(Math.random() * 3); 	
 				
 				if (forceBarb>1)
 					x=forceBarb-2;
 
 				if (x==0) {
-					abOutput += " (Bear)";
+					tmpClassFeatures += " (Bear)";
 					classtxt += "Bear)";
 				}
 				if (x==1) {
-					abOutput += " (Eagle)";
+					tmpClassFeatures += " (Eagle)";
 					classtxt += "Eagle)";
 				}
 				if (x==2) {
-					abOutput += " (Wolf)";
+					tmpClassFeatures += " (Wolf)";
 					classtxt += "Wolf)";
 				}
 			}
 		}
 		if (level >4) {
-			abOutput += ", Extra Attack, Fast Movement";
+			tmpClassFeatures += ", Extra Attack, Fast Movement";
 			speed += 10;
 		}
 		if (level >5) {
-			abOutput += ", Path Feature";
+			tmpClassFeatures += ", Path Feature";
 		}
 		if (level >6) {
-			abOutput += ", Feral Instinct";
+			tmpClassFeatures += ", Feral Instinct";
 		}
 		if (level >8) {
-			abOutput += ", Brutal Critical";
+			tmpClassFeatures += ", Brutal Critical";
 		}
 		if (level >9) {
-			abOutput += ", Spirit Walker";
+			tmpClassFeatures += ", Spirit Walker";
 		}
 
 		eqOutput += ", Explorer's pack"
@@ -2435,15 +2567,15 @@ switch (cl) {
 		ab2=1;
 		bg=4;	
 		st=[1,5];	
-		abOutput += "Spellcasting, Bardic Inspiration (";		
+		tmpClassFeatures += "Spellcasting, Bardic Inspiration (";		
 		if (level > 9) {
-			abOutput += "d10)";
+			tmpClassFeatures += "d10)";
 		} else if (level > 4) {
-			abOutput += "d8)";
+			tmpClassFeatures += "d8)";
 		} else {
-			abOutput += "d6)";
+			tmpClassFeatures += "d6)";
 		}
-//		abOutput += mod[5] + " uses)"
+		tmpClassFeatures += " " + mod[5] + " uses"
 
 		//Can play 3 musical instruments,
 		for (i=0;i < 3;i++) {
@@ -2467,11 +2599,11 @@ switch (cl) {
 
 
 		if (level > 1) {
-				abOutput += ", Jack of all trades, Song of Rest (d";
+				tmpClassFeatures += ", Jack of all trades, Song of Rest (d";
 				if (level >8 ) {
-					abOutput += "8)";
+					tmpClassFeatures += "8)";
 				} else {
-					abOutput += "6)";
+					tmpClassFeatures += "6)";
 				}
 		}
 
@@ -2484,28 +2616,28 @@ switch (cl) {
 
 			
 			if (x > 0.5) {
-				abOutput += ", Bard College (Lore), Bonus proficiencies, Cutting words";
+				tmpClassFeatures += ", Bard College (Lore), Bonus proficiencies, Cutting words";
 				classtxt += " (College of Lore)";
 				if (level>5)  {
-					abOutput += ", Additional Magical Secrets";
+					tmpClassFeatures += ", Additional Magical Secrets";
 				}
 			} else {
-				abOutput += ", Bard College (Valor), Bonus proficiencies (arms), Combat inspiration";
+				tmpClassFeatures += ", Bard College (Valor), Bonus proficiencies (arms), Combat inspiration";
 				classtxt += " (College of Valor)";
 				if (level >5) {
-					abOutput += ", Extra Attack";
+					tmpClassFeatures += ", Extra Attack";
 				}
 			}
-			abOutput += ", Expertise";
+			tmpClassFeatures += ", Expertise";
 		}
 		if (level > 4) {
-			abOutput += ", Font of Inspiration";
+			tmpClassFeatures += ", Font of Inspiration";
 		}
 		if (level > 5) {
-			abOutput += ", Countercharm";
+			tmpClassFeatures += ", Countercharm";
 		}
 		if (level > 9) {
-			abOutput += ", Magical Secrets";
+			tmpClassFeatures += ", Magical Secrets";
 			
 		}
 
@@ -2518,7 +2650,7 @@ switch (cl) {
 		ab3=2;
 		bg=1;
 		st=[4,5];
-		abOutput += "Spellcasting, Divine Domain";				
+		tmpClassFeatures += "Spellcasting, Divine Domain";				
 		clDomain = Math.floor(Math.random() * 8); 
 		if ((forceDomain > -1) && (document.getElementById("selClass").value == 3)) {
 			clDomain = forceDomain;
@@ -2528,7 +2660,7 @@ switch (cl) {
 		switch (clDomain) {
 			case 0:
 				classtxt += "Knowledge";
-				abOutput += ", Blessings of Knowledge";
+				tmpClassFeatures += ", Blessings of Knowledge";
 				moreLang += 2;
 
 				for (x=2;x > 0;x--) {
@@ -2537,82 +2669,82 @@ switch (cl) {
 					expertise.push(y);
 				}
 				if (level > 1)
-					abOutput += ", Channel Divinity: Turn Undead, Channel Divinity: Knowledge of the Ages";				
+					tmpClassFeatures += ", Channel Divinity: Turn Undead, Channel Divinity: Knowledge of the Ages";				
 				if (level > 5) {
-					abOutput += ", Channel Divinity: Read Thoughts";
+					tmpClassFeatures += ", Channel Divinity: Read Thoughts";
 				}
 				if (level > 7) {
-					abOutput += ", Potent Spellcasting";
+					tmpClassFeatures += ", Potent Spellcasting";
 				}
 				break;
 			case 1:
 				classtxt += "Life";
 
-				abOutput += ", Bonus proficiency, Discipline of Life";
+				tmpClassFeatures += ", Bonus proficiency, Discipline of Life";
 				if (level > 1)
-					abOutput += ", Channel Divinity: Turn Undead, Channel Divinity: Preserve Life (heals " + (5*level) + " hp)";				
+					tmpClassFeatures += ", Channel Divinity: Turn Undead, Channel Divinity: Preserve Life (heals " + (5*level) + " hp)";				
 				if (level > 5) {
-					abOutput += ", Blessed Healer";
+					tmpClassFeatures += ", Blessed Healer";
 				}
 
 				if (level > 7) {
-					abOutput += ", Divine Strike +1d8 Radiant dmg";
+					tmpClassFeatures += ", Divine Strike +1d8 Radiant dmg";
 				}
 
 				break;
 			case 2:
 				classtxt += "Light";
-				abOutput += ", Bonus proficiency, Warding Flare";
+				tmpClassFeatures += ", Bonus proficiency, Warding Flare";
 				myCantrips.unshift("Light");	
 				if (level > 1)
-					abOutput += ", Channel Divinity: Turn Undead, Channel Divinity: Radiance of the Dawn";				
+					tmpClassFeatures += ", Channel Divinity: Turn Undead, Channel Divinity: Radiance of the Dawn";				
 				if (level > 5) {
-					abOutput += ", Improved Flare";
+					tmpClassFeatures += ", Improved Flare";
 				}
 				if (level > 7) {
-					abOutput += ", Potent Spellcasting";
+					tmpClassFeatures += ", Potent Spellcasting";
 				}
 
 
 				break;
 			case 3:
 				classtxt += "Nature";
-				abOutput += ", Acolyte of Nature, Bonus proficiency";
+				tmpClassFeatures += ", Acolyte of Nature, Bonus proficiency";
 				if (level > 1)
-					abOutput += ", Channel Divinity: Turn Undead, Channel Divinity: Charm Animals and Plants";				
+					tmpClassFeatures += ", Channel Divinity: Turn Undead, Channel Divinity: Charm Animals and Plants";				
 				if (level > 5) {
-					abOutput += ", Dampen Elements";
+					tmpClassFeatures += ", Dampen Elements";
 				}
 
 				if (level > 7) {
-					abOutput += ", Divine Strike - 1d8 Cold, Fire, or Lighting dmg";
+					tmpClassFeatures += ", Divine Strike - 1d8 Cold, Fire, or Lighting dmg";
 				}
 
 				break;
 			case 4:
 				classtxt += "Tempest";
-				abOutput += ", Bonus proficiency, Wrath of the Storm";
+				tmpClassFeatures += ", Bonus proficiency, Wrath of the Storm";
 				if (level > 1)
-					abOutput += ", Channel Divinity: Turn Undead, Channel Divinity: Destructive Wrath";				
+					tmpClassFeatures += ", Channel Divinity: Turn Undead, Channel Divinity: Destructive Wrath";				
 				if (level > 5) {
-					abOutput += ", Thunderbolt Strike";
+					tmpClassFeatures += ", Thunderbolt Strike";
 				}
 
 				if (level > 7) {
-					abOutput += ", Divine Strike - 1d8 Thunder dmg";
+					tmpClassFeatures += ", Divine Strike - 1d8 Thunder dmg";
 				}
 
 				break;
 			case 5:
 				classtxt += "Trickery";
-				abOutput += ", Blessing of the Trickster";
+				tmpClassFeatures += ", Blessing of the Trickster";
 				if (level > 1)
-					abOutput += ", Channel Divinity: Turn Undead, Channel Divinity: Invoke Duplicity";				
+					tmpClassFeatures += ", Channel Divinity: Turn Undead, Channel Divinity: Invoke Duplicity";				
 				if (level > 5) {
-					abOutput += ", Channel Divinity: Cloak of Shadows";
+					tmpClassFeatures += ", Channel Divinity: Cloak of Shadows";
 				}
 				if (level > 7) {
-					abOutput += ", Divine Strike - 1d8 Poison dmg";
+					tmpClassFeatures += ", Divine Strike - 1d8 Poison dmg";
 				}
 
 
@@ -2620,42 +2752,42 @@ switch (cl) {
 				break;
 			case 6:
 				classtxt += "War";
-				abOutput += ", Bonus proficiency, War Priest";
+				tmpClassFeatures += ", Bonus proficiency, War Priest";
 				if (level > 1)
-					abOutput += ", Channel Divinity: Turn Undead, Channel Divinity: Guided Strike";				
+					tmpClassFeatures += ", Channel Divinity: Turn Undead, Channel Divinity: Guided Strike";				
 				if (level > 5) {
-					abOutput += ", Channel Divinity: War God's Blessing";
+					tmpClassFeatures += ", Channel Divinity: War God's Blessing";
 				}
 				if (level > 7) {
-					abOutput += ", Divine Strike (1d8 Extra Weapon dmg)";
+					tmpClassFeatures += ", Divine Strike (1d8 Extra Weapon dmg)";
 				}
 
 
 				break;
 			case 7:
 				classtxt += "Death";
-				abOutput += ", Bonus proficiency, Reaper";
+				tmpClassFeatures += ", Bonus proficiency, Reaper";
 				if (level > 1) {
 					x=5 + (level * 2);
-					abOutput += ", Channel Divinity: Turn Undead, Channel Divinity: Touch of Death " + showPlus( x ) + "  necrotic damage";				
+					tmpClassFeatures += ", Channel Divinity: Turn Undead, Channel Divinity: Touch of Death " + showPlus( x ) + "  necrotic damage";				
 				}
 				if (level > 5) {
-					abOutput += ", Inescapable Destruction";
+					tmpClassFeatures += ", Inescapable Destruction";
 				}
 				if (level > 7) {
-					abOutput += ", Divine Strike +1d8 necrotic damage";
+					tmpClassFeatures += ", Divine Strike +1d8 necrotic damage";
 				}
 				break;			
 		}
 		classtxt += " domain)";
 		if (level > 7) {
-			abOutput += ", Destroy Undead (CR 1)"
+			tmpClassFeatures += ", Destroy Undead (CR 1)"
 
 		} else if (level >4) {
-			abOutput += ", Destroy Undead (CR 1/2)"	
+			tmpClassFeatures += ", Destroy Undead (CR 1/2)"	
 		}
 		if (level > 9) {
-			abOutput += ", Divine Intervention"
+			tmpClassFeatures += ", Divine Intervention"
 
 		} 
 		break;
@@ -2669,7 +2801,7 @@ switch (cl) {
 		st=[3,4];
 		toOutput += ", Herbalism kit";
 		languageOutput += ", Druidic";
-		abOutput += "Spellcasting";
+		tmpClassFeatures += "Spellcasting";
 		xx = -1;
 		if ((forceCircle > -1) && (document.getElementById("selClass").value == 4)) {
 			xx = forceCircle;
@@ -2683,7 +2815,7 @@ switch (cl) {
 
 		
 		if (level > 1) {
-			abOutput += ", Wild Shape";				
+			tmpClassFeatures += ", Wild Shape";				
 
 			//choose cirlce of moon or circle of land.  
 			// circle of land 1st
@@ -2691,11 +2823,11 @@ switch (cl) {
 
 				//show 2nd levl abilities to wild shape
 				if (level < 4) {
-					abOutput += " (CR 1/4 creature - No flying or swimming speed)";
+					tmpClassFeatures += " (CR 1/4 creature - No flying or swimming speed)";
 				} else if (level < 8) {
-					abOutput += " (CR 1/2 creature - No flying speed)";
+					tmpClassFeatures += " (CR 1/2 creature - No flying speed)";
 				} else if (level >7) {
-					abOutput += " (CR 1 creature)";
+					tmpClassFeatures += " (CR 1 creature)";
 				}
 
 
@@ -2877,17 +3009,17 @@ switch (cl) {
 				}
 					
 				classtxt += " (Circle of the Land  &mdash; "+land+")";
-				abOutput += ", Druid Circle (" + land + "), Bonus Cantrip, Natural Recovery";
+				tmpClassFeatures += ", Druid Circle (" + land + "), Bonus Cantrip, Natural Recovery";
 				if (level > 5)
-						abOutput += ", Land's Stride";
+						tmpClassFeatures += ", Land's Stride";
 				if (level > 9)
-						abOutput += ", Nature's Ward";
+						tmpClassFeatures += ", Nature's Ward";
 
 			} else {
 				// circle of the moon
 				drCircle = 1;
 				classtxt += " (Circle of the Moon)";
-				abOutput += ", Combat Wild Shape, Circle Forms (CR ";
+				tmpClassFeatures += ", Combat Wild Shape, Circle Forms (CR ";
 				tempTxt = "1";
 				if (level > 5)
 					tempTxt = "2";
@@ -2902,12 +3034,12 @@ switch (cl) {
 				} else if (level >3) {
 					tempTxt += " - No flying speed)";
 				}
-				abOutput += tempTxt;
+				tmpClassFeatures += tempTxt;
 				if (level > 5) {
-					abOutput += ", Primal Strike";
+					tmpClassFeatures += ", Primal Strike";
 				}
 				if (level > 9) {
-					abOutput += ", Elemental Wild Shape";
+					tmpClassFeatures += ", Elemental Wild Shape";
 				}
 
 
@@ -2950,26 +3082,26 @@ switch (cl) {
 				break;
 		}
 
-		abOutput += "Fighting Style ("+temp+"), Second Wind";				
+		tmpClassFeatures += "Fighting Style ("+temp+"), Second Wind";				
 
 		if (level > 1)
-			abOutput += ", Action Surge";				
+			tmpClassFeatures += ", Action Surge";				
 
 		if (level > 2) {
-			abOutput += ", Martial Archetype (Eldritch Knight), Spellcasting, Weapon Bond";				
+			tmpClassFeatures += ", Martial Archetype (Eldritch Knight), Spellcasting, Weapon Bond";				
 			classtxt += " (Eldritch Knight)"
 			}
 		if (level > 4) {
-			abOutput += ", Extra Attack";				
+			tmpClassFeatures += ", Extra Attack";				
 		}
 		if (level > 7) {
-			abOutput += ", War Magic";				
+			tmpClassFeatures += ", War Magic";				
 		}
 		if (level > 8) {
-			abOutput += ", Indomitable (one use)";				
+			tmpClassFeatures += ", Indomitable (1 use)";				
 		}
 		if (level > 9) {
-			abOutput += ", Eldritch Strike";				
+			tmpClassFeatures += ", Eldritch Strike";				
 		}
 		
 		break;
@@ -3010,10 +3142,10 @@ switch (cl) {
 				break;
 		}
 
-		abOutput += "Fighting Style ("+temp+"), Second Wind";				
+		tmpClassFeatures += "Fighting Style ("+temp+"), Second Wind";				
 
 		if (level > 1)
-			abOutput += ", Action Surge";				
+			tmpClassFeatures += ", Action Surge";				
 
 
 		if (level > 2) {
@@ -3024,12 +3156,12 @@ switch (cl) {
 
 			if (x < 0.5) {
 				classtxt += " (Champion)";
-				abOutput += ", Martial Archetype (Champion), Improved Critical";				
+				tmpClassFeatures += ", Martial Archetype (Champion), Improved Critical";				
 				if (level > 6) {
-					abOutput += ", Remarkable Athlete";									
+					tmpClassFeatures += ", Remarkable Athlete";									
 				}
 				if (level > 9) {
-					abOutput += ", Additional Fighting Style (";									
+					tmpClassFeatures += ", Additional Fighting Style (";									
 					x=fiStyle;
 					while ((x==fiStyle) || (x==3)) {
 						x=Math.floor(Math.random() * 6); 	
@@ -3057,7 +3189,7 @@ switch (cl) {
 							fiStyle2=5;
 							break;
 					}
-					abOutput += temp + ")";
+					tmpClassFeatures += temp + ")";
 				}
 
 
@@ -3077,7 +3209,7 @@ switch (cl) {
 				if (level > 9)
 					z+=2;
 
-				abOutput += ", Martial Archetype (Battle Master), "+y+" Superiority Dice (d"+x+"), "+z+" Maneuvers ";
+				tmpClassFeatures += ", Martial Archetype (Battle Master), "+y+" Superiority Dice (d"+x+"), "+z+" Maneuvers ";
 				pickManeuvers(z);
 
 				z = Math.floor(Math.random() * artisans.length);
@@ -3088,19 +3220,19 @@ switch (cl) {
 
 				
 				if (level > 6) {
-					abOutput += ", Know Your Enemy";		
+					tmpClassFeatures += ", Know Your Enemy";		
 				}
 				if (level > 9) {
-					abOutput += ", Improved Combat Superiority";		
+					tmpClassFeatures += ", Improved Combat Superiority";		
 				}
 
 			}
 		}			
 		if (level > 4) {
-			abOutput += ", Extra Attack";				
+			tmpClassFeatures += ", Extra Attack";				
 		}
 		if (level > 8) {
-			abOutput += ", Indomitable (one use)";				
+			tmpClassFeatures += ", Indomitable (one use)";				
 		}
 			
 		break;
@@ -3144,10 +3276,10 @@ switch (cl) {
 		}
 
 
-		abOutput += "Fighting Style ("+temp+"), Second Wind";				
+		tmpClassFeatures += "Fighting Style ("+temp+"), Second Wind";				
 
 		if (level > 1)
-			abOutput += ", Action Surge";				
+			tmpClassFeatures += ", Action Surge";				
 
 
 		if (level > 2) {
@@ -3160,14 +3292,14 @@ switch (cl) {
 			if (x < 0.5) {
 
 				classtxt += " (Champion)";
-				abOutput += ", Martial Archetype (Champion), Improved Critical";				
+				tmpClassFeatures += ", Martial Archetype (Champion), Improved Critical";				
 				if (level > 6) {
-					abOutput += ", Remarkable Athlete";									
+					tmpClassFeatures += ", Remarkable Athlete";									
 				}
 
 
 				if (level > 9) {
-					abOutput += ", Additional Fighting Style (";									
+					tmpClassFeatures += ", Additional Fighting Style (";									
 
 					fiStyle2=fiStyle;
 					while (fiStyle2==fiStyle) {
@@ -3194,7 +3326,7 @@ switch (cl) {
 							temp = "Two-Weapon Fighting";
 							break;
 					}
-					abOutput += temp + ")";
+					tmpClassFeatures += temp + ")";
 				}
 			} else {
 
@@ -3214,7 +3346,7 @@ switch (cl) {
 				if (level > 9)
 					z+=2;
 
-				abOutput += ", Martial Archetype (Battle Master), "+y+" Superiority Dice (d"+x+"), "+z+" Maneuvers ";
+				tmpClassFeatures += ", Martial Archetype (Battle Master), "+y+" Superiority Dice (d"+x+"), "+z+" Maneuvers ";
 				pickManeuvers(z);
 
 				z = Math.floor(Math.random() * artisans.length);
@@ -3225,10 +3357,10 @@ switch (cl) {
 
 				
 				if (level > 6) {
-					abOutput += ", Know Your Enemy";		
+					tmpClassFeatures += ", Know Your Enemy";		
 				}
 				if (level > 9) {
-					abOutput += ", Improved Combat Superiority";		
+					tmpClassFeatures += ", Improved Combat Superiority";		
 				}
 
 
@@ -3236,10 +3368,10 @@ switch (cl) {
 		}			
 
 		if (level > 4) {
-			abOutput += ", Extra Attack";				
+			tmpClassFeatures += ", Extra Attack";				
 		}
 		if (level > 8) {
-			abOutput += ", Indomitable (one use)";				
+			tmpClassFeatures += ", Indomitable (one use)";				
 		}
 		
 		break;
@@ -3271,21 +3403,21 @@ switch (cl) {
 
 		}
 
-		abOutput += "Unarmored Defense, Martial Arts";				
+		tmpClassFeatures += "Unarmored Defense, Martial Arts";				
 		if (level > 1) {
 			ki=level;
-			abOutput += ", Ki (" + ki + " points), Unarmored Movement (+";				
+			tmpClassFeatures += ", Ki (" + ki + " points), Unarmored Movement (+";				
 			x=10;
 
 			if (level >5)
 				x += 5;
 			if (level >9)
 				x += 5;
-			abOutput += x +" speed)"
+			tmpClassFeatures += x +" speed)"
 			speed += x;
 			}
 		if (level > 2) {
-			abOutput += ", Deflect Missiles, Monastic Tradition (";				
+			tmpClassFeatures += ", Deflect Missiles, Monastic Tradition (";				
 			x=Math.floor(Math.random() * 3); 	
 
 			if (forceMonk > -1) {
@@ -3294,18 +3426,18 @@ switch (cl) {
 			
 			switch (x) {
 				case 0:
-					abOutput += "Way of the Open Hand), Open Hand Technique";
+					tmpClassFeatures += "Way of the Open Hand), Open Hand Technique";
 					classtxt += " (Way of the Open Hand)";
 
 					break;
 				case 1:
-					abOutput += "Way of Shadow), Shadow Arts";
+					tmpClassFeatures += "Way of Shadow), Shadow Arts";
 					myCantrips.unshift("Minor Illusion");						
 			
 					classtxt += " (Way of Shadow)";
 					break;
 				case 2:
-					abOutput += "Way of the Four Elements), Disciple of the Elements (Elemental Attunement";
+					tmpClassFeatures += "Way of the Four Elements), Disciple of the Elements (Elemental Attunement";
 					classtxt += " (Way of the Four Elements)";
 					i=1;
 					if (level >5)
@@ -3337,38 +3469,38 @@ switch (cl) {
 							tempTxt += ", Gong of Summit";
 
 
-						if (abOutput.indexOf(tempTxt) == -1) {
-							abOutput += tempTxt;
+						if (tmpClassFeatures.indexOf(tempTxt) == -1) {
+							tmpClassFeatures += tempTxt;
 							i--;
 						}
 
 					}
-					abOutput += ")";
+					tmpClassFeatures += ")";
 
 					break;
 
 			}
 		}
 		if (level > 3)
-			abOutput += ", Slow Fall";				
+			tmpClassFeatures += ", Slow Fall";				
 		if (level > 4)
-			abOutput += ", Extra Attack, Stunning Strike";				
+			tmpClassFeatures += ", Extra Attack, Stunning Strike";				
 		if (level > 5)
-			abOutput += ", Ki-empowered Strikes";				
+			tmpClassFeatures += ", Ki-empowered Strikes";				
 		if ((level >5) && (x==0)) {
-			abOutput += ", Wholeness of Body (" + (level*3) + " hit points)";				
+			tmpClassFeatures += ", Wholeness of Body (" + (level*3) + " hit points)";				
 		}
 		if ((level >5) && (x==1)) {
-			abOutput += ", Shadow Step";							
+			tmpClassFeatures += ", Shadow Step";							
 		}
 		if (level > 6)
-			abOutput += ", Evasion";				
+			tmpClassFeatures += ", Evasion";				
 		if (level > 6)
-			abOutput += ", Stillness of Mind";				
+			tmpClassFeatures += ", Stillness of Mind";				
 		if (level > 8)
-			abOutput += ", Unarmored Movement Improvement";				
+			tmpClassFeatures += ", Unarmored Movement Improvement";				
 		if (level > 9)
-			abOutput += ", Purity of Body";				
+			tmpClassFeatures += ", Purity of Body";				
 
 
  		break;
@@ -3380,7 +3512,7 @@ switch (cl) {
 		bg=8;
 		hd=10;
 		st=[4,5];
-		abOutput += "Divine Sense, Lay on Hands ("  + (level * 5) + " hp)";
+		tmpClassFeatures += "Divine Sense, Lay on Hands ("  + (level * 5) + " hp)";
 		if (level > 1){
 			
 			x=Math.floor(Math.random() * 4); 	
@@ -3405,10 +3537,10 @@ switch (cl) {
 					break;
 			}
 
-			abOutput += ", Fighting Style (" + temp + "),  Spellcasting, Divine Smite";
+			tmpClassFeatures += ", Fighting Style (" + temp + "),  Spellcasting, Divine Smite";
 		}
 		if (level > 2) {
-			abOutput += ", Divine Health, Sacred Oath (Oath of ";
+			tmpClassFeatures += ", Divine Health, Sacred Oath (Oath of ";
 			x=Math.floor(Math.random() * 3); 	
 
 
@@ -3420,7 +3552,7 @@ switch (cl) {
 
 			switch (x) {
 				case 0:
-					abOutput +=  "Devotion), Sacred Weapon, Turn the Unholy";
+					tmpClassFeatures +=  "Devotion), Sacred Weapon, Turn the Unholy";
 					oaSpells.push("Protection from Evil and Good");
 					oaSpells.push("Sanctuary");
 					if (level >4) {
@@ -3428,7 +3560,7 @@ switch (cl) {
 						oaSpells.push("Zone of Truth");
 					}
 					if (level > 6) {
-						abOutput +=  ", Aura of Devotion";						
+						tmpClassFeatures +=  ", Aura of Devotion";						
 					}
 					if (level >8) {
 						oaSpells.push("Beacon of Hope");
@@ -3439,7 +3571,7 @@ switch (cl) {
 					classtxt += " (Oath of Devotion)";
 					break;
 				case 1:
-					abOutput +=  "the Ancients), Nature's Wrath, Turn the Faithless";
+					tmpClassFeatures +=  "the Ancients), Nature's Wrath, Turn the Faithless";
 					oaSpells.push("Ensnaring Strike");
 					oaSpells.push("Speak with Animals");
 					if (level >4) {
@@ -3447,7 +3579,7 @@ switch (cl) {
 						oaSpells.push("Misty Step");
 					}
 					if (level > 6) {
-						abOutput +=  ", Aura of Warding";						
+						tmpClassFeatures +=  ", Aura of Warding";						
 					}
 
 					if (level >8) {
@@ -3457,7 +3589,7 @@ switch (cl) {
 					classtxt += " (Oath of the Ancients)";					
 					break;
 				case 2:
-					abOutput +=  "Vengeance), Abjure Enemy, Vow of Enmity";
+					tmpClassFeatures +=  "Vengeance), Abjure Enemy, Vow of Enmity";
 					oaSpells.push("Bane");
 					oaSpells.push("Hunter's Mark");
 					if (level >4) {
@@ -3465,7 +3597,7 @@ switch (cl) {
 						oaSpells.push("Misty Step");
 					}
 					if (level > 6) {
-						abOutput +=  ", Relentless Avenger";						
+						tmpClassFeatures +=  ", Relentless Avenger";						
 					}
 					if (level >8) {
 						oaSpells.push("Haste");
@@ -3476,14 +3608,14 @@ switch (cl) {
 			}
 		}
 		if (level > 4) {
-			abOutput +=  ", Extra Attack";
+			tmpClassFeatures +=  ", Extra Attack";
 		}
 		if (level > 5) {
-			abOutput +=  ", Aura of Protection";
+			tmpClassFeatures +=  ", Aura of Protection";
 		}
 
 		if (level > 9) {
-			abOutput +=  ", Aura of Courage";
+			tmpClassFeatures +=  ", Aura of Courage";
 		}
 
 		break;
@@ -3589,7 +3721,7 @@ switch (cl) {
 			}
 		}
 
-		abOutput += "Favored Enemy ("+ favored +"), Natural Explorer (" + land + ")";				
+		tmpClassFeatures += "Favored Enemy ("+ favored +"), Natural Explorer (" + land + ")";				
 		if (level > 1) {
 			x=Math.floor(Math.random() * 4); 	
 			switch (x) {
@@ -3610,7 +3742,7 @@ switch (cl) {
 					fiStyle=5;
 					break;
 			}
-			abOutput += ", Fighting Style (" + temp + "), Spellcasting";				
+			tmpClassFeatures += ", Fighting Style (" + temp + "), Spellcasting";				
 		}
 		if (level  > 2) {
 			x=Math.random();
@@ -3658,18 +3790,18 @@ switch (cl) {
 					temp+=", Exceptional Training";
 				}
 			}
-			abOutput += ", Ranger Archetype (" + temp+ ", Primeval Awareness";				
+			tmpClassFeatures += ", Ranger Archetype (" + temp+ ", Primeval Awareness";				
 		}	
 		if (level > 4) {
-			abOutput +=  ", Extra Attack";
+			tmpClassFeatures +=  ", Extra Attack";
 		}
 
 		if (level > 7) {
-			abOutput +=  ", Land's Stride";
+			tmpClassFeatures +=  ", Land's Stride";
 		}
 
 		if (level > 9) {
-			abOutput +=  ", Hide in Plain Sight";
+			tmpClassFeatures +=  ", Hide in Plain Sight";
 		}
 
 
@@ -3711,11 +3843,11 @@ switch (cl) {
 			x=5;
 
 
-		abOutput += "Expertise, Sneak Attack ("+ x + "d6), Thieves' Cant";				
+		tmpClassFeatures += "Expertise, Sneak Attack ("+ x + "d6), Thieves' Cant";				
 		languageOutput += ", Thieves' Cant";
 
 		if (level > 1) {
-			abOutput += ", Cunning Action";				
+			tmpClassFeatures += ", Cunning Action";				
 		}
 		if (level > 2) {
 			x=Math.floor(Math.random() * 2); 	
@@ -3740,14 +3872,14 @@ switch (cl) {
 
 				}
 
-			abOutput += ", Roguish Archetype (" + temp;				
+			tmpClassFeatures += ", Roguish Archetype (" + temp;				
 		}
 		if (level >4)
-			abOutput += ", Uncanny Dodge";				
+			tmpClassFeatures += ", Uncanny Dodge";				
 		if (level >5)
-			abOutput += ", Expertise";				
+			tmpClassFeatures += ", Expertise";				
 		if (level >6)
-			abOutput += ", Evasion";				
+			tmpClassFeatures += ", Evasion";				
 		break;
 	case 12: 
 		classtxt = "Rogue";
@@ -3771,24 +3903,24 @@ switch (cl) {
 			x=5;
 
 
-		abOutput += "Expertise, Sneak Attack ("+ x + "d6), Thieves' Cant";				
+		tmpClassFeatures += "Expertise, Sneak Attack ("+ x + "d6), Thieves' Cant";				
 		languageOutput += ", Thieves' Cant";
 
 		if (level > 1) {
-			abOutput += ", Cunning Action";				
+			tmpClassFeatures += ", Cunning Action";				
 		}
 		if (level > 2) {
 			classtxt += " (Arcane Trickster)";
-			abOutput += ", Roguish Archetype (Arcane Trickster), Spellcasting";				
+			tmpClassFeatures += ", Roguish Archetype (Arcane Trickster), Spellcasting";				
 			if (level >8) 
-				abOutput += ", Magical Ambush"
+				tmpClassFeatures += ", Magical Ambush"
 		}
 		if (level >4)
-			abOutput += ", Uncanny Dodge";				
+			tmpClassFeatures += ", Uncanny Dodge";				
 		if (level >5)
-			abOutput += ", Expertise";				
+			tmpClassFeatures += ", Expertise";				
 		if (level >6)
-			abOutput += ", Evasion";				
+			tmpClassFeatures += ", Evasion";				
 		
 		break;
 	case 13:
@@ -3799,7 +3931,7 @@ switch (cl) {
 		bg=6;
 		hd=6;
 		st=[5,2];
-		abOutput += "Spellcasting";
+		tmpClassFeatures += "Spellcasting";
 		soOrigin=Math.floor(Math.random() * 2);
 
 		if (forceSorc > -1) {
@@ -3814,30 +3946,30 @@ switch (cl) {
 					tempAr = dragon();
 					dragType = tempAr[0];
 					elemType = tempAr[1];
-					abOutput += ", Draconic Ancestry (" + dragType + ", " + elemType + " damage)";
+					tmpClassFeatures += ", Draconic Ancestry (" + dragType + ", " + elemType + " damage)";
 				}
-				abOutput += ", Draconic Resilience";
+				tmpClassFeatures += ", Draconic Resilience";
 				languageOutput += ", Draconic";
 				if (level > 5) {
-					abOutput += ", Elemental Affinity";
+					tmpClassFeatures += ", Elemental Affinity";
 				}
 				break;
 			case 1:
 				classtxt += "Wild Magic)";
-				abOutput += ", Wild Magic Surge, Tides of Chaos";				
+				tmpClassFeatures += ", Wild Magic Surge, Tides of Chaos";				
 				if (level > 5) {
-					abOutput += ", Bend Luck";
+					tmpClassFeatures += ", Bend Luck";
 				}
 				break;
 		}
 		if (level >1)
-			abOutput += ", Font of Magic";
+			tmpClassFeatures += ", Font of Magic";
 		if (level >2) {
-			abOutput += ", Metamagic ";
+			tmpClassFeatures += ", Metamagic ";
 			pickMeta();
 			}
 		if (level >1)
-			abOutput += ", " + level + " sorcery points";				
+			tmpClassFeatures += ", " + level + " sorcery points";				
 		break;
 	case 14:
 		classtxt = "Warlock (";
@@ -3851,7 +3983,7 @@ switch (cl) {
 		bg=2;
 		st=[4,5];
 
-		abOutput += "Otherworldly Patron (";
+		tmpClassFeatures += "Otherworldly Patron (";
 
 		waPatron=Math.floor(Math.random() * 3);
 		
@@ -3884,12 +4016,12 @@ switch (cl) {
 				patronSpells5.push("Dominate Person");
 				patronSpells5.push("Seeming");
 
-				abOutput += "Archfey), Fey Presence";
+				tmpClassFeatures += "Archfey), Fey Presence";
 				if (level > 5) {
-					abOutput += ", Misty Escape";
+					tmpClassFeatures += ", Misty Escape";
 				}
 				if (level > 9) {
-					abOutput += ", Beguiling Defenses";
+					tmpClassFeatures += ", Beguiling Defenses";
 				}
 
 				break;
@@ -3918,12 +4050,12 @@ switch (cl) {
 				patronSpells5.push("Hallow");
 
 
-				abOutput += "Fiend), Dark One's Blessing";				
+				tmpClassFeatures += "Fiend), Dark One's Blessing";				
 				if (level > 5) {
-					abOutput += ", Dark One's Own Luck";
+					tmpClassFeatures += ", Dark One's Own Luck";
 				}
 				if (level > 9) {
-					abOutput += ", Fiendish Resilience";
+					tmpClassFeatures += ", Fiendish Resilience";
 				}
 
 
@@ -3955,18 +4087,18 @@ switch (cl) {
 				patronSpells5.push("Telekinesis");
 
 
-				abOutput += "Great Old One), Awakened Mind";
+				tmpClassFeatures += "Great Old One), Awakened Mind";
 				if (level > 5) {
-					abOutput += ", Entropic Ward";
+					tmpClassFeatures += ", Entropic Ward";
 				}
 				if (level > 9) {
-					abOutput += ", Thought Shield";
+					tmpClassFeatures += ", Thought Shield";
 				}
 				break;
 
 		}
 		classtxt += " Patron";
-		abOutput += ", Pact Magic"
+		tmpClassFeatures += ", Pact Magic"
 
 
 		if (level > 2) {
@@ -4019,7 +4151,7 @@ switch (cl) {
 		classtxt += ")";
 
 		if (level > 1) {
-			abOutput += ", Eldritch Invocations ";				
+			tmpClassFeatures += ", Eldritch Invocations ";				
 			tempAr = pickEldritch();
 				if (tempAr.indexOf("Beguiling Influence") > -1) {
 					skLearn[4] = true;
@@ -4088,7 +4220,7 @@ switch (cl) {
 					waSpells.push("Polymorph (once per long rest, uses a spell slot)");
 				}	
 
-			abOutput += tempTxt;
+			tmpClassFeatures += tempTxt;
 			}
 
 		break;
@@ -4100,7 +4232,7 @@ switch (cl) {
 		hd=6;
 		bg=10;
 		st=[3,4];
-		abOutput += "Spellcasting, Arcane Recovery";
+		tmpClassFeatures += "Spellcasting, Arcane Recovery";
 
 		if (level > 1) {
 			var schools = ["Abjuration","Conjuration","Divination","Enchantment","Evocation","Illusion","Necromancy","Transmutation"]
@@ -4115,79 +4247,79 @@ switch (cl) {
 
 
 			classtxt += " (" + schools[wiSchool] + " school)";
-			abOutput += ", Arcane Tradition (" + schools[wiSchool] +" school)"
+			tmpClassFeatures += ", Arcane Tradition (" + schools[wiSchool] +" school)"
 			switch(wiSchool) {
 				case 0:
-					abOutput += ", Abjuration Savant, Arcane Ward";
+					tmpClassFeatures += ", Abjuration Savant, Arcane Ward";
 					if (level >5) {
-						abOutput += ", Projected Ward";
+						tmpClassFeatures += ", Projected Ward";
 					}
 					if (level >9) {
-						abOutput += ", Improved Abjuration";
+						tmpClassFeatures += ", Improved Abjuration";
 					}
 					break;
 				case 1:
-					abOutput += ", Conjuration Savant, Minor Conjuration";
+					tmpClassFeatures += ", Conjuration Savant, Minor Conjuration";
 					if (level >5) {
-						abOutput += ", Benign Transposition";
+						tmpClassFeatures += ", Benign Transposition";
 					}
 					if (level >9) {
-						abOutput += ", Focused Conjuration";
+						tmpClassFeatures += ", Focused Conjuration";
 					}
 					break;
 				case 2:
-					abOutput += ", Divination Savant, Portent";
+					tmpClassFeatures += ", Divination Savant, Portent";
 					if (level >5) {
-						abOutput += ", Expert Divination";
+						tmpClassFeatures += ", Expert Divination";
 					}
 					if (level >9) {
-						abOutput += ", The Third Eye";
+						tmpClassFeatures += ", The Third Eye";
 					}
 					break;
 				case 3:
-					abOutput += ", Enchantment Savant, Hypnotic Gaze";
+					tmpClassFeatures += ", Enchantment Savant, Hypnotic Gaze";
 					if (level >5) {
-						abOutput += ", Instinctive Charm";
+						tmpClassFeatures += ", Instinctive Charm";
 					}
 					if (level >9) {
-						abOutput += ", Split Enchantment";
+						tmpClassFeatures += ", Split Enchantment";
 					}
 					break;
 				case 4:
-					abOutput += ", Evocation Savant, Sculpt Spells";
+					tmpClassFeatures += ", Evocation Savant, Sculpt Spells";
 					if (level >5) {
-						abOutput += ", Potent Cantrip";
+						tmpClassFeatures += ", Potent Cantrip";
 					}
 					if (level >9) {
-						abOutput += ", Empowered Evocation";
+						tmpClassFeatures += ", Empowered Evocation";
 					}
 					break;
 				case 5:
-					abOutput += ", Illusion Savant, Improved Minor Illusion";
+					tmpClassFeatures += ", Illusion Savant, Improved Minor Illusion";
 					mySpells.unshift("Minor Illusion");						
 					if (level >5) {
-						abOutput += ", Malleable Illusions";
+						tmpClassFeatures += ", Malleable Illusions";
 					}
 					if (level >9) {
-						abOutput += ", Illusory Self";
+						tmpClassFeatures += ", Illusory Self";
 					}
 					break;
 				case 6:
-					abOutput += ", Necromancy Savant, Grim Harvest";
+					tmpClassFeatures += ", Necromancy Savant, Grim Harvest";
 					if (level >5) {
-						abOutput += ", Undead Thralls";
+						tmpClassFeatures += ", Undead Thralls";
 					}
 					if (level >9) {
-						abOutput += ", Inured to Undeath";
+						tmpClassFeatures += ", Inured to Undeath";
 					}
 					break;
 				case 7:
-					abOutput += ", Transmutation Savant, Minor Alchemy";
+					tmpClassFeatures += ", Transmutation Savant, Minor Alchemy";
 					if (level >5) {
-						abOutput += ", Transmuter's Stone";
+						tmpClassFeatures += ", Transmuter's Stone";
 					}
 					if (level >9) {
-						abOutput += ", Shapechanger";
+						tmpClassFeatures += ", Shapechanger";
 					}
 					break;
 				}
@@ -11181,6 +11313,7 @@ var txtWpnAttacks = wpOutput;
 
 // EQUIPMENT
 var txtEquip = "<b>Equipment:</b><br>";
+txtEquip += trinkets[(rollDice(1,100)+1)] + "<br>";
 do {
 	eqOutput = eqOutput.replace(", ","<br>");
 }
@@ -11188,7 +11321,7 @@ while (eqOutput.includes(", "))
 eqOutput += "<br>";
 
 // insert trinket here
-eqOutput += "Random Trinket<br>";
+// eqOutput += "Random Trinket<br>";
 
 // add full text of equipment packs
 if (eqOutput.includes("Burglar's pack")) {
@@ -11222,6 +11355,9 @@ else if (eqOutput.includes("Scholar's pack")) {
 else {
 	eqOutput += txtExplorersPack;
 }
+
+
+
 // remove any double breaks
 do {
 	eqOutput = eqOutput.replace("<br><br>","<br>");
@@ -11245,12 +11381,13 @@ if (maOutput.length > 0) {
 }
 
 // WEALTH
-var txtWealth = "<b>Wealth:</b> " + gold + "gp<br>";
+var txtWealth = "<b>Wealth:</b> " + gold + " gp<br>";
 
 // BACKGROUND
 
 // BACKGROUND FEATURE
-//var txtBgFeature = "<b>Background Feature:</b> ";
+txtBgFeature = "<b>Background Feature:</b> ";
+txtBgFeature += bgFeatures[(bg-1)];
 txtBgFeature += "<br>";
 
 // RACIAL TRAITS
@@ -11258,6 +11395,7 @@ txtRaceTraits += "<br>";
 
 // CLASS FEATURES
 var txtClassFeatures = "<b>Class Features:</b> ";
+txtClassFeatures += tmpClassFeatures;
 txtClassFeatures += "<br>";
 
 // SPELLS
@@ -11270,6 +11408,7 @@ var txtTest = "TEST SECTION:<br>";
 txtTest += "weOutput:<br>" + weOutput + "<br>";
 txtTest += "poOutput:<br>" + poOutput + "<br>";
 txtTest += "maOutput:<br>" + maOutput + "<br>";
+txtTest += "abOutput:<br>" + abOutput + "<br>";
 
 
 //document.getElementById("status").innerHTML = output;
@@ -11294,14 +11433,14 @@ if (txtMagicItems.length > 0) {
 
 document.getElementById("dspWealth").innerHTML = txtWealth;
 
-document.getElementById("dspTest").innerHTML = txtTest;
+//document.getElementById("dspTest").innerHTML = txtTest;
 
 document.getElementById("dspBgFeature").innerHTML = txtBgFeature;
 document.getElementById("dspRaceTraits").innerHTML = txtRaceTraits;
 document.getElementById("dspClassFeatures").innerHTML = txtClassFeatures;
 document.getElementById("dspSpells").innerHTML = txtSpells;
 
-document.getElementById("ro").innerHTML = rollOutput;
+//document.getElementById("ro").innerHTML = rollOutput;
 //document.getElementById("sk").innerHTML = skOutput;
 //document.getElementById("ab").innerHTML = abOutput;
 //document.getElementById("wp").innerHTML = wpOutput;
